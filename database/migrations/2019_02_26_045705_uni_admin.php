@@ -16,7 +16,7 @@ class UniAdmin extends Migration
         Schema::create('uniAdmin', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string(’adminName’,20 )->unique();
+            $table->string('adminName',20 )->unique();
             $table->timestamps();
         });
     }

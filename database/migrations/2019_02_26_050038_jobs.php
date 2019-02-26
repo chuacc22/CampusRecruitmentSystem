@@ -15,17 +15,17 @@ class Jobs extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments(’employerID’);
-            $table->string(’companyName’,50 )->index();
-            $table->string(’companyWeb’, 100)->index();
-            $table->string(’companyRegNo’, 15)->index();
-            $table->text(’jobDesc’)->index();
-            $table->text(’Requirement’)->nullable();
-            $table->text(’lookingFor’)->index();
-            $table->text(’companyOverview’)->index();
-            $table->text(’companySnapshot’)->index();
-            $table->text(location’)->index();
-            $table->string(’contactUs’, 30)->index();
+            $table->increments('employerID');
+            $table->string('companyName',50 )->index();
+            $table->string('companyWeb', 100)->index();
+            $table->string('companyRegNo', 15)->index();
+            $table->text('jobDesc');
+            $table->text('Requirement');
+            $table->text('lookingFor');
+            $table->text('companyOverview');
+            $table->text('companySnapshot');
+            $table->text('location');
+            $table->string('contactUs', 30);
             $table->timestamps();
         });
     }
