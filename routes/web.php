@@ -11,9 +11,23 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('student/studentFindJob');
+// });
+
 Route::get('/', function () {
-    return view('student/studentFindJob');
+    return view('authentication/studentLogin');
 });
+
+Auth::routes();
+
+//login authentication
+Route::post('/login/checkLogin', '\loginController@checkLogin');
+// Route::post('/login/checkLogin', 'Authentication\LoginController@checkLogin');
+// Route::post('/login/checkLogin', 'Authentication\LoginController@checkLogin');
+Route::get('/login/employerLogin', 'Authentication\LoginController@checkLogin');
+
+Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 
 // Route::get('/division/create', 'DivisionController@create')->name('division.create');
 // Route::post('/division', 'DivisionController@store')->name('division.store');

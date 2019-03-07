@@ -13,7 +13,7 @@
         @include('layout.loginNavi')
         <div id = "employerLoginPage">
             <div class="ui raised very padded text container segment">
-                <form class = "ui form">
+                <form class = "ui form" >
                     <h2 class = "ui center aligned diving header"> Employer Login </h2>
                         <div class = "field">
                             <label> Email </label>
