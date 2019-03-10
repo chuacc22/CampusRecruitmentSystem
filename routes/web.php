@@ -22,10 +22,20 @@ Route::get('/', function () {
 Auth::routes();
 
 //login authentication
-Route::post('/login/checkLogin', '\loginController@checkLogin');
+Route::post('/login/checkLogin', 'Authentication\LoginController@checkStudentLogin');
 // Route::post('/login/checkLogin', 'Authentication\LoginController@checkLogin');
 // Route::post('/login/checkLogin', 'Authentication\LoginController@checkLogin');
-Route::get('/login/employerLogin', 'Authentication\LoginController@checkLogin');
+
+Route::post('/login/checkEmployerLogin', 'Authentication\LoginController@checkEmployerLogin');
+
+Route::get('/login/logout', 'Authentication\LogoutController@logout');
+
+//loginNavi
+Route::get('/authentication/studentLogin', 'naviController@studentLogin') -> name('studentLogin.navi');
+Route::get('/authentication/employerLogin', 'naviController@employerLogin') -> name('employerLogin.navi');
+Route::get('/authentication/adminLogin', 'naviController@adminLogin') -> name('adminLogin.navi');
+
+
 
 Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 
@@ -37,5 +47,5 @@ Route::get('/student/studentMyJob', 'naviController@studentMyJob') -> name('stud
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
 Route::get('/student/studentFindJob', 'naviController@studentFindJob') -> name('studentFindJob.navi');
 Route::get('/employer/employerInbox', 'naviController@employerInbox') -> name('employerInbox.navi');
-Route::get('/employer/employerPostJobx', 'naviController@employerPostJob') -> name('employerPostJob.navi');
+Route::get('/employer/employerPostJob', 'naviController@employerPostJob') -> name('employerPostJob.navi');
 Route::get('/employer/employerUpdateProfile', 'naviController@employerUpdateProfile') -> name('employerUpdateProfile.navi');

@@ -33,4 +33,16 @@ class naviController extends Controller
     function employerUpdateProfile(){
         return view('employer.employerUpdateProfile');
     }
+
+    function studentLogin(){
+        return view('authentication.studentLogin');
+    }
+
+    function employerLogin(){
+        return view('authentication.employerLogin');
+    }
+
+    function adminLogin(){
+        return view('authentication.adminLogin');
+    }
 }

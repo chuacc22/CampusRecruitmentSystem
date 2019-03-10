@@ -11,22 +11,16 @@
         <!-- header --> 
         @include('layout.header')
         @include('layout.loginNavi')
-        <div id = "employerLoginPage">
+        <div id = "adminLoginPage">
             <div class="ui raised very padded text container segment">
-                <form class = "ui form"  method="POST" action="{{url('/login/checkEmployerLogin')}}">
-                        {{ csrf_field() }}
-                        @if(isset(Auth::user()->email))
-                            <script>
-                                window.location = "/login/successEmployerLogin";
-                            </script>
-                        @endif
-                        @if($message = \Session::get('error'))
-                                <div class="alert-block">
-                                    <i class="material-icons" size="20" style="color:red">error</i>
-                                    <strong>{{$message}}</strong></li>
-                                </div>
-                        @endif
-                    <h2 class = "ui center aligned diving header"> Employer Login </h2>
+                <form class = "ui form"  method="POST" action="{{url('/login/checkAdminLogin')}}">
+                    {{ csrf_field() }}
+                    @if(isset(Auth::user()->email))
+                        <script>
+                            window.location = "/login/successAdminlogin";
+                        </script>
+                    @endif
+                    <h2 class = "ui center aligned diving header"> Admin Login </h2>
                     <div class = "field">
                         <label> Email </label>
                         <input type="text" name = "email">
@@ -38,10 +32,7 @@
                     <button class="ui left foated blue large button" type="submit">
                         LOGIN
                     </button>                
-                </form>
-                    <a>
-                        <h3 class = "ui center aligned diving header"> Register Here </h3>
-                    </a>    
+                </form>   
             </div>
         </div>
     </div>
