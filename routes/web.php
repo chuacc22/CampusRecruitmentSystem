@@ -11,13 +11,13 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('student/studentFindJob');
-// });
-
 Route::get('/', function () {
-    return view('authentication/studentLogin');
+    return view('student/companyPage');
 });
+
+// Route::get('/', function () {
+//     return view('authentication/studentLogin');
+// });
 
 Auth::routes();
 

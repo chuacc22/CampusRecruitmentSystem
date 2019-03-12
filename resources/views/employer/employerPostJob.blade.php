@@ -6,9 +6,9 @@
             border-top: 0px !important; 
         }
     </style>
-<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
-<script src="{{ asset('js/semantic.min.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
 <body>
     <div class = "ui container fuild" >
         <!-- header --> 

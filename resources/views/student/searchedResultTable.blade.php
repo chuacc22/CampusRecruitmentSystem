@@ -15,7 +15,7 @@
                     </tr>
                     <tr>
                         <td>We're looking for:
-                            <b><pre style="font-family: Consolas;">{{$value -> lookingFor}}</pre></b>
+                            <b><pre style="font-family: helvetica;">{{$value -> lookingFor}}</pre></b>
                         </td>
                         <td><b>Contact Us</b>
                             <br>{{$value -> contactUs}}
