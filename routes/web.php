@@ -42,6 +42,9 @@ Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 // Route::get('/division/create', 'DivisionController@create')->name('division.create');
 // Route::post('/division', 'DivisionController@store')->name('division.store');
 
+//SEARCH
+Route::get('/searchedResult', 'SearchController@search') -> name('searchedResult');
+
 Route::get('/student/studentUpdateProfile', 'naviController@studentUpdateProfile') -> name('studentUpdateProfile.navi');
 Route::get('/student/studentMyJob', 'naviController@studentMyJob') -> name('studentMyJob.navi');
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');

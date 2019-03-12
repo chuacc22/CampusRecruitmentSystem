@@ -13,7 +13,7 @@
         @include('layout.navigation')
         <div id = "studentFindJob">
             <div class="ui raised very padded text container segment" id = "Job Search">
-                <form class = "ui form">
+                <form class = "ui form" method="GET" action="{{URL::route('searchedResult')}}">
                     <h2 class = "ui diving header">Job Search</h2>
                         <div class = "two fields">
                             <div class = "field">
@@ -25,7 +25,9 @@
                                 <input type="text" name = "searchjoblocation">
                             </div>
                         </div>
-                    <div class="ui button" tabindex="0">Search</div>
+                        <button class="ui left foated blue large button" type="submit">
+                            SEARCH
+                        </button>
                 </form>
             </div>
         </div>

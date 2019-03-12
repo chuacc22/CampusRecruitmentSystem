@@ -15,7 +15,7 @@ class Jobs extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('employerID');
+            $table->increments('id');
             $table->string('companyName',50 )->index();
             $table->string('companyWeb', 100)->index();
             $table->string('companyRegNo', 15)->index();
