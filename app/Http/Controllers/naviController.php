@@ -18,8 +18,9 @@ class naviController extends Controller
         return view('student.studentInbox');
     }
 
-    function studentFindJob(){
-        return view('student.studentFindJob');
+    function searchedResult(){
+        $job = null;
+        return view('student.searchedResult', compact('job'));
     }
 
     function employerInbox(){

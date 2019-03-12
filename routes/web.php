@@ -45,10 +45,11 @@ Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 //SEARCH
 Route::get('/searchedResult', 'SearchController@search') -> name('searchedResult');
 
+
 Route::get('/student/studentUpdateProfile', 'naviController@studentUpdateProfile') -> name('studentUpdateProfile.navi');
 Route::get('/student/studentMyJob', 'naviController@studentMyJob') -> name('studentMyJob.navi');
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
-Route::get('/student/studentFindJob', 'naviController@studentFindJob') -> name('studentFindJob.navi');
+Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');
 Route::get('/employer/employerInbox', 'naviController@employerInbox') -> name('employerInbox.navi');
 Route::get('/employer/employerPostJob', 'naviController@employerPostJob') -> name('employerPostJob.navi');
 Route::get('/employer/employerUpdateProfile', 'naviController@employerUpdateProfile') -> name('employerUpdateProfile.navi');

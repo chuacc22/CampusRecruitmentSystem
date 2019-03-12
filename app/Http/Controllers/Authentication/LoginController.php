@@ -27,7 +27,7 @@ class LoginController extends Controller
         if($student){
             if($request->password==$student->password){
                 //set session
-                return redirect('/student/studentFindJob');
+                return redirect('/student/searchedResult');
             }else{
                 return back()->with('error', 'Wrong Password');
             }
@@ -37,7 +37,7 @@ class LoginController extends Controller
     }
 
     function successlogin(){
-        return view('/student/studentFindJob');
+        return view('/student/searchedResult');
     }
 
     function checkEmployerLogin(Request $request){

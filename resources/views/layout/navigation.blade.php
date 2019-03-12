@@ -1,6 +1,6 @@
 <div class="ui attached stackable menu">
   <div class="ui container">
-    <a href="{{URL::route('studentFindJob.navi')}}" class="item">Find Job </a>
+    <a href="{{URL::route('searchedResult.navi')}}" class="item">Find Job </a>
     <a href="{{URL::route('studentInbox.navi')}}" class="right item">Inbox </a>
     <div class="ui simple dropdown item">USERNAME
       <i class="dropdown icon"></i>

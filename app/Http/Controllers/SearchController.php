@@ -14,10 +14,12 @@ class SearchController extends Controller
     {
         $searchjobtitle = \Request::get('searchjobtitle');
         $searchjoblocation = \Request::get('searchjoblocation');
+        $careertype = \Request::get('careertype');
 
-
-        $job = Job::where('companyName', 'like', '%' .$searchjobtitle .'%' ,'and', 'location', 'like' ,'%' .$searchjoblocation .'%' ) ->orderBy('companyName') -> paginate(20);
+        $job = Job::where('companyName', 'like', '%' .$searchjobtitle .'%' )
+                    ->where('location', 'like' ,'%' .$searchjoblocation .'%' ) 
+                    ->where('lookingFor', 'like', '%' .$careertype . '%') -> orderBy('companyName') -> paginate(20);
    
-        return view('searchedResult', compact('job'));
+        return view('student.searchedResult', compact('job'));
     }
 }

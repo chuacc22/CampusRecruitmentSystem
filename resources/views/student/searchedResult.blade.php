@@ -16,7 +16,7 @@
         @include('layout.header')
         @include('layout.navigation')
         <div id = "searchedResultPage" class="ui container">
-            <form class = "ui form">
+            <form class = "ui form" method="GET" action="{{URL::route('searchedResult')}}">
                 <div class="ui container segment">
                 <h2 class = "ui diving header">Search Criteria</h2>
                     <div class = "field">
@@ -26,17 +26,25 @@
                     <div class = "two fields">
                         <div class = "field">
                             <label> Location </label>
-                            <input type="text" name = "searchjobtitle">
+                            <input type="text" name = "searchjoblocation">
                         </div>
                         <div class = "field">
                             <label> Career Type </label>
-                            <input type="text" name = "searchjoblocation">
+                            <input type="text" name = "careertype">
                         </div>
                     </div>
-                    <div class="ui button" tabindex="0">Search</div>
+                    <button class="ui left foated blue large button" type="submit">
+                        SEARCH
+                    </button>
                 </div>
             </form>
-                @include('searchedResultTable')
+            @if($job != null)
+                @if ($job->isEmpty())
+                    <h3>No job found...</h3>
+                @else
+                    @include('/student/searchedResultTable')
+                @endif
+            @endif
         </div>
     </div>
 </body>
