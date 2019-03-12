@@ -44,6 +44,7 @@ Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 
 //SEARCH
 Route::get('/searchedResult', 'SearchController@search') -> name('searchedResult');
+Route::get('/student/companyPage/{id}', 'SearchController@searchCompany')-> name('searchedCompany');
 
 
 Route::get('/student/studentUpdateProfile', 'naviController@studentUpdateProfile') -> name('studentUpdateProfile.navi');

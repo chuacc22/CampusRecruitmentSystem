@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
@@ -17,9 +18,16 @@ class SearchController extends Controller
         $careertype = \Request::get('careertype');
 
         $job = Job::where('companyName', 'like', '%' .$searchjobtitle .'%' )
-                    ->where('location', 'like' ,'%' .$searchjoblocation .'%' ) 
+                    ->where('state', 'like' ,'%' .$searchjoblocation .'%' ) 
+                    ->orWhere('district', 'like' ,'%' .$searchjoblocation .'%' ) 
                     ->where('lookingFor', 'like', '%' .$careertype . '%') -> orderBy('companyName') -> paginate(20);
    
         return view('student.searchedResult', compact('job'));
+    }
+
+    public function searchCompany($id){
+        $job['job'] = Job::find($id);
+        $job['job'] = DB::select('select * from jobs where id = ? ', [$id]);
+        return view('/student/companyPage',$job);
     }
 }
