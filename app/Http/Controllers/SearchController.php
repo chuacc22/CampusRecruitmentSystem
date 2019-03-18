@@ -18,9 +18,11 @@ class SearchController extends Controller
         $careertype = \Request::get('careertype');
 
         $job = Job::where('companyName', 'like', '%' .$searchjobtitle .'%' )
-                    ->where('state', 'like' ,'%' .$searchjoblocation .'%' ) 
-                    ->orWhere('district', 'like' ,'%' .$searchjoblocation .'%' ) 
-                    ->where('lookingFor', 'like', '%' .$careertype . '%') -> orderBy('companyName') -> paginate(20);
+                    ->Where('lookingFor', 'like', '%' .$careertype . '%')
+                    ->where(function($q) use ($searchjoblocation) {
+                        $q->Where('state', 'like' ,'%' .$searchjoblocation .'%' )
+                          ->orWhere('district', 'like' ,'%' .$searchjoblocation .'%' );
+                    })-> orderBy('companyName') -> paginate(20);
    
         return view('student.searchedResult', compact('job'));
     }

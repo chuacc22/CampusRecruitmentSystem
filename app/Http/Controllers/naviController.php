@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 
 class naviController extends Controller
 {
-    function studentUpdateProfile(){
-        return view('student.studentUpdateProfile');
-    }
     
     function studentMyJob(){
         return view('student.studentMyJob');
@@ -19,8 +17,13 @@ class naviController extends Controller
     }
 
     function searchedResult(){
-        $job = null;
-        return view('student.searchedResult', compact('job'));
+        if (Session::has('email')){
+            if (Session::get('role')=='student'){
+                $job = null;
+                return view('student.searchedResult', compact('job'));
+            }
+        }
+        return view('authentication.studentLogin');   
     }
 
     function employerInbox(){

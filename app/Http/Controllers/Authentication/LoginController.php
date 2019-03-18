@@ -27,6 +27,12 @@ class LoginController extends Controller
         if($student){
             if($request->password==$student->password){
                 //set session
+
+                Session::put('email' , $student->email);
+                Session::put('id', $student->id);
+                Session::put('lastName', $student->lastName);
+                Session::put('firstName', $student->firstName);
+                Session::put('role', 'student');
                 return redirect('/student/searchedResult');
             }else{
                 return back()->with('error', 'Wrong Password');
@@ -52,6 +58,8 @@ class LoginController extends Controller
         if($employer){
             if($request->password==$employer->password){
                 //set session
+                Session::put('email' , $employer->email);
+                Session::put('role', 'employer');
                 return redirect('/employer/employerPostJob');
             }else{
                 return back()->with('error', 'Wrong Password');

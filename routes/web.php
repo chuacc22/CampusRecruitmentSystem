@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('student/companyPage');
-});
-
 // Route::get('/', function () {
-//     return view('authentication/studentLogin');
+//     return view('student/companyPage');
 // });
+
+Route::get('/', function () {
+    return view('authentication/studentLogin');
+});
 
 Auth::routes();
 
@@ -47,7 +47,8 @@ Route::get('/searchedResult', 'SearchController@search') -> name('searchedResult
 Route::get('/student/companyPage/{id}', 'SearchController@searchCompany')-> name('searchedCompany');
 
 
-Route::get('/student/studentUpdateProfile', 'naviController@studentUpdateProfile') -> name('studentUpdateProfile.navi');
+Route::get('/student/studentUpdateProfile', 'UpdateController@searchStudentProfile') -> name('studentSearchProfile.navi');
+Route::post('/student/studentUpdateProfile', 'UpdateController@updateStudentProfile') -> name('studentUpdateProfile.navi');
 Route::get('/student/studentMyJob', 'naviController@studentMyJob') -> name('studentMyJob.navi');
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');

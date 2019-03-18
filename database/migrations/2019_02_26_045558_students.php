@@ -24,10 +24,11 @@ class Students extends Migration
             $table->string('email', 60)->index();
             $table->string('mobileNo',11)->index();
             $table->text('address')->nullable();
+            $table->text('course')->nullable();
             $table->text('education')->nullable();
             $table->string('cgpa', 6)->index();
             $table->text('achievement')->nullable();
-            $table->text('club/society')->nullable();
+            $table->text('clubSociety')->nullable();
             $table->text('skills')->nullable();
             $table->text('resume');
             $table->timestamps();

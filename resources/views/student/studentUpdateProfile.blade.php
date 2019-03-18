@@ -9,6 +9,7 @@
         <!-- header --> 
         @include('layout.header')
         @include('layout.navigation')
+        {{-- @foreach ($student as $value) --}}
         <div id = "studentApplicationFormPage" class="ui container">
             <form class = "ui form">
                 <div class="ui container segment">
@@ -27,62 +28,72 @@
                             <input type="text" name = "searchjoblocation">
                         </div>
                     </div>
+                    <button class="ui left foated blue large button" type="submit">
+                        Change Password
+                    </button> 
                 </div>
+            </form>
+            {{-- <form class ="ui form"> --}}
+            <form class ="ui form" method="POST" action="{{URL::route('studentUpdateProfile.navi')}}">
+                {{ csrf_field() }}
                 <div class="ui container segment">
                     <h2 class = "ui diving header">Personal Info</h2>
                         <div class = "two fields">
                             <div class = "field">
                                 <label> First Name </label>
-                                <input type="text" name = "studentFirstName">
+                            <input type="text" name = "firstName" value="{{$student -> firstName}}">
                             </div>
                             <div class = "field">
                                 <label> Last Name</label>
-                                <input type="text" name = "studentLastName">
+                                <input type="text" name = "lastName" value="{{$student -> lastName}}">
                             </div>
                         </div>
                         <div class = "field">
                             <label> Email</label>
-                            <input type="text" name = "studentEmail">
+                            <input type="text" name = "email" value="{{$student -> email}}">
                         </div>
                         <div class = "field">
                             <label> Mobile No.</label>
-                            <input type="text" name = "studentMobileNo">
+                            <input type="text" name = "mobileNo" value="{{$student -> mobileNo}}">
                         </div>
                         <div class = "field">
                             <label> Address </label>
-                            <textarea name = "student Address"></textarea>
+                            <textarea name = "address">{{$student -> address}}</textarea>
                         </div>
                     </div>
                 <div class="ui container segment">
                     <h2 class = "ui diving header">Education</h2>
                         <div class = "field">
                             <label> Course/Programme </label>
-                            <input type="text" name = "studentCourse">
+                            <input type="text" name="course" value="{{$student -> course}}">
                         </div>
                         <div class = "field">
                             <label> CGPA</label>
-                            <input type="text" name = "studentCGPA">
+                            <input type="text" name = "cgpa" value="{{$student -> cgpa}}">
                         </div>
                         <div class = "field">
                             <label> Achievement</label>
-                            <input type="text" name = "studentAchievement">
+                            <textarea name = "achievement">{{$student -> achievement}}</textarea>
                         </div>
                         <div class = "field">
                             <label> Club/Society</label>
-                            <input type="text" name = "studentClub">
+                            <textarea name = "clubSociety" >{{$student -> clubSociety}}</textarea>
                         </div>
                         <div class = "field">
                             <label> Skills </label>
-                            <textarea name = "studentSkills"></textarea>
+                            <textarea name = "skills" >{{$student -> skills}}</textarea>
                         </div>
                         <div class = "field">
                             <label> Resume </label>
-                            <textarea name = "studentResume"></textarea>
+                            <input type="text" name = "resume" value="{{$student -> resume}}">
                         </div>
                     </div>
-                <div class="ui button" tabindex="0">Update Profile</div>
-            </form>
-        </div>
+                    <button class="ui left foated blue large button" type="submit">
+                            UPDATE
+                    </button>            
+                </form>
+            </div>
+        {{-- @endforeach --}}
     </div>
 </body>
 <script>

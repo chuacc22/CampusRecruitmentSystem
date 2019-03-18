@@ -11,7 +11,8 @@ use App\Http\Controllers\Controller;
 class LogoutController extends Controller
 {
     function logout(){
-        Auth::logout();
+        Session::forget('email');
+        Session::forget('role');
         return view('/Authentication/login');
     }
 }

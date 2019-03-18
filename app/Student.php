@@ -17,10 +17,11 @@ class Student extends Model
         'email',
         'mobileNo',
         'address',
+        'course',
         'education',
         'cgpa',
         'achievement',
-        'clubs/society',
+        'clubociety',
         'skills',
         'resume'
     ];
