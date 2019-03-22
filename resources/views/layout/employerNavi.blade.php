@@ -7,7 +7,7 @@
             <i class="dropdown icon"></i>
             <div class="menu">
               <a href="{{URL::route('employerUpdateProfile.navi')}}" class="item"> Profile </a>
-              <a class="item"> Log Out </a>
+              <a href="{{url('login/logout')}}" class="item"> Log Out </a>
             </div>
           </div>
         </div>

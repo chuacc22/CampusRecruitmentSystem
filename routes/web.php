@@ -23,21 +23,18 @@ Auth::routes();
 
 //login authentication
 Route::post('/login/checkLogin', 'Authentication\LoginController@checkStudentLogin');
-// Route::post('/login/checkLogin', 'Authentication\LoginController@checkLogin');
-// Route::post('/login/checkLogin', 'Authentication\LoginController@checkLogin');
-
 Route::post('/login/checkEmployerLogin', 'Authentication\LoginController@checkEmployerLogin');
-
+Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 Route::get('/login/logout', 'Authentication\LogoutController@logout');
 
-//loginNavi
+
+//loginNavigator
 Route::get('/authentication/studentLogin', 'naviController@studentLogin') -> name('studentLogin.navi');
 Route::get('/authentication/employerLogin', 'naviController@employerLogin') -> name('employerLogin.navi');
 Route::get('/authentication/adminLogin', 'naviController@adminLogin') -> name('adminLogin.navi');
 
 
 
-Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
 
 // Route::get('/division/create', 'DivisionController@create')->name('division.create');
 // Route::post('/division', 'DivisionController@store')->name('division.store');

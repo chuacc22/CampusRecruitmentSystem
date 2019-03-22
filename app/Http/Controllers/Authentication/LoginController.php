@@ -59,6 +59,9 @@ class LoginController extends Controller
             if($request->password==$employer->password){
                 //set session
                 Session::put('email' , $employer->email);
+                Session::put('id', $employer->id);
+                Session::put('lastName', $employer->lastName);
+                Session::put('firstName', $employer->firstName);
                 Session::put('role', 'employer');
                 return redirect('/employer/employerPostJob');
             }else{

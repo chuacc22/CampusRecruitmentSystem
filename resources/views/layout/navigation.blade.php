@@ -7,7 +7,7 @@
       <div class="menu">
         <a href="{{URL::route('studentSearchProfile.navi')}}" class="item"> Profile </a>
         <a href="{{URL::route('studentMyJob.navi')}}" class="item"> My Job </a>
-        <a class="item"> Log Out </a>
+        <a href="{{url('login/logout')}}" class="item"> Log Out </a>
       </div>
     </div>
   </div>
