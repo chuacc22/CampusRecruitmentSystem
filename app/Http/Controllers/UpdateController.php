@@ -23,8 +23,24 @@ class UpdateController extends Controller
         $student = Student::find($id);
 
         if($student){
-            $student->fill($request->all());
-            $student->update();
+            // DB::Table('students')->where('id',$id)->update(
+            // array(
+            //         'firstName' =>  $request->firstName,
+            //         'lastName' => $request->lastName,
+            //         'email' => $request->email,
+            //         'mobileNo' => $request->mobileNo,
+            //         'address' => $request->address,
+            //         'course' =>  $request->course,
+            //         'cgpa' => $request->cgpa,
+            //         'achievement' => $request->achievement,
+            //         'clubSociety' => $request->clubSociety,
+            //         'skills' => $request->skills,
+            //         'resume' => $request->resume
+            //     )
+            // );
+
+            $employer->fill($request->all());
+            $employer->update();
             return redirect()->route('studentUpdateProfile.navi');
         }else{
             return $result = array('msg' => 'User Not Found !! ', 'error' => true);
@@ -44,6 +60,7 @@ class UpdateController extends Controller
         if($employer){
             $employer->fill($request->all());
             $employer->update();
+
             return redirect()->route('employerUpdateProfile.navi');
         }else{
             return $result = array('msg' => 'User Not Found !! ', 'error' => true);
