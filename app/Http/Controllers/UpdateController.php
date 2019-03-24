@@ -39,8 +39,8 @@ class UpdateController extends Controller
             //     )
             // );
 
-            $employer->fill($request->all());
-            $employer->update();
+            $student->fill($request->all());
+            $student->update();
             return redirect()->route('studentUpdateProfile.navi');
         }else{
             return $result = array('msg' => 'User Not Found !! ', 'error' => true);
