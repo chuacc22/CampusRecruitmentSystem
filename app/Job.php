@@ -10,15 +10,19 @@ class Job extends Model
 
     protected $fillable = [
         'id',
+        'title',
         'companyName',
         'companyWeb', 
         'companyRegNo', 
         'jobDesc',
-        'Requirement',
+        'requirement',
         'lookingFor',
         'companyOverview',
         'companySnapshot',
-        'location',
-        'contactUs'
+        'address' ,
+        'district' ,
+        'state' ,
+        'contactUs' ,
+        'employerID'
     ];
 }

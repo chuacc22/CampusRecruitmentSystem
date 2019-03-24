@@ -15,28 +15,28 @@
         @include('layout.header')
         @include('layout.employerNavi')
         <div id = "employerPostJob" class="ui segment">
-            <form class = "ui form" method="POST" action="{{URL::route('employerPostJob.navi')}}">
-                {{ csrf_field() }}
+        <form class = "ui form" method="POST" action="/employer/employerEditJob/{{$job->id}}">
                 <div class="ui container">
+                    {{ csrf_field() }}
                     <table class = "ui very basic table">
                         <tbody>
                             <tr>
                                 <div class = "field">
                                     <label>Job Title</label>
-                                <input type="text" name = "title">                                    
+                                <input type="text" name = "title" value="{{$job -> title}}">                                    
                                 </div>
                             <tr>
                             <tr>
                                 <td>
                                     <div class = "field">
                                         <label>Company Website</label>
-                                        <input type="text" name = "companyWeb">                                    
+                                    <input type="text" name = "companyWeb" value="{{$job -> companyWeb}}">                                    
                                     </div>
                                 <td>
                                 <td>
                                     <div class = "field">
                                         <label>Company Reg.No</label>
-                                        <input type="text" name = "companyRegNo">
+                                        <input type="text" name = "companyRegNo" value="{{$job -> companyRegNo}}">
                                     </div>
                                 </td>
                             </tr>
@@ -49,7 +49,7 @@
                                 <td>
                                     <b><div class = "field">
                                         <label>Company Name</label>
-                                        <input type="text" name = "companyName">
+                                        <input type="text" name = "companyName" value="{{$job -> companyName}}">
                                     </div></b>
                                 </td>
                                 <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}"> </td>
@@ -58,7 +58,7 @@
                                 <td colspan = "2">
                                     <h3>JOB DESCRIPTION</h3>
                                     <div class = "field">
-                                        <textarea name = "jobDesc"></textarea>
+                                        <textarea name = "jobDesc">{{$job -> jobDesc}}"</textarea>
                                     </div>
                                 <td>
                             </tr>
@@ -66,7 +66,7 @@
                                 <td colspan = "2">
                                     <h3>Requirements</h3>
                                     <div class = "field">
-                                        <textarea name = "requirement"></textarea>
+                                        <textarea name = "requirement">{{$job -> requirement}}</textarea>
                                     </div>
                                 <td>
                             </tr>
@@ -74,7 +74,7 @@
                                 <td colspan = "2">
                                     <h3>We're looking for :</h3>
                                     <div class = "field">
-                                        <textarea name = "lookingFor"></textarea>
+                                        <textarea name = "lookingFor">{{$job -> lookingFor}}</textarea>
                                     </div>                                    
                                 <td>
                             </tr>
@@ -83,13 +83,13 @@
                                     <td style="width:50%" valign="top" >
                                         <h3>Company Overview</h3>
                                         <div class = "field">
-                                                <textarea name = "companyOverview"></textarea>
+                                                <textarea name = "companyOverview">{{$job -> companyOverview}}</textarea>
                                         </div>                                        
                                     </td>
                                     <td style="width:50%; border-left: 1px solid #e8e9e9;" valign="top">
                                         <h3>Company Snapshot</h3>
                                         <div class = "field">
-                                            <textarea name = "companySnapshot"></textarea>
+                                            <textarea name = "companySnapshot">{{$job -> companySnapshot}}</textarea>
                                         </div>                                          
                                     </td>
                                 </div>
@@ -99,22 +99,22 @@
                                     <h3>WORK LOCATION</h3>
                                     <b>Address</b>
                                     <div class = "field">
-                                        <input type="text" name = "address" placeholder="Address">
-                                        <input type="text" name = "district" placeholder="District & PostCode">
-                                        <input type="text" name = "state" placeholder="State">
+                                        <input type="text" name = "address" value="{{$job -> address}}">
+                                        <input type="text" name = "district" value="{{$job -> district}}">
+                                        <input type="text" name = "state" value="{{$job -> state}}">
                                     </div>            
                                 </td>
                                 <td valign="top">
                                     <h3>Contact Us</h3>
                                     <div class = "field">
-                                        <textarea name = "contactUs"></textarea>
+                                        <textarea name = "contactUs">{{$job -> contactUs}}</textarea>
                                     </div>                                     
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <button class="ui left foated blue large button" style="margin-left: 42%;" type="submit">
-                        Post Job
+                        Update Job
                     </button>                
             </form>
         </div>

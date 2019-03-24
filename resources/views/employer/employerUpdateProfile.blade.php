@@ -10,55 +10,62 @@
         @include('layout.header')
         @include('layout.employerNavi')
         <div id = "employerUpdatePage" class="ui container">
-                <form class = "ui form">
-                    <div class="ui container segment">
-                    <h2 class = "ui diving header">Change Password</h2>
+            <form class = "ui form">
+                <div class="ui container segment">
+                <h2 class = "ui diving header">Change Password</h2>
+                    <div class = "field">
+                        <label> Old Password </label>
+                        <input type="text" name = "searchjobtitle">
+                    </div>
+                    <div class = "two fields">
                         <div class = "field">
-                            <label> Old Password </label>
-                            <input type="text" name = "employerOldPassword">
+                            <label> New Password </label>
+                            <input type="text" name = "searchjobtitle">
                         </div>
+                        <div class = "field">
+                            <label>Confirm Password</label>
+                            <input type="text" name = "searchjoblocation">
+                        </div>
+                    </div>
+                    <button class="ui left foated blue large button" type="submit">
+                        Change Password
+                    </button> 
+                </div>
+            </form>
+            <form class ="ui form" method="POST" action="{{URL::route('employerUpdateProfile.navi')}}">
+                {{ csrf_field() }}
+                <div class="ui container segment">
+                    <h2 class = "ui diving header">Personal Info</h2>
                         <div class = "two fields">
                             <div class = "field">
-                                <label> New Password </label>
-                                <input type="text" name = "employerNewPassword">
+                                <label> First Name </label>
+                            <input type="text" name = "firstName" value="{{$employer -> firstName}}">
                             </div>
                             <div class = "field">
-                                <label>Confirm Password</label>
-                                <input type="text" name = "employerConfirmPassword">
+                                <label> Last Name</label>
+                                <input type="text" name = "lastName" value="{{$employer -> lastName}}">
                             </div>
                         </div>
-                        <div class="ui button" tabindex="0">Update Password</div>
+                        <div class = "field">
+                            <label> Email</label>
+                            <input type="text" name = "email" value="{{$employer -> email}}">
+                        </div>
+                        <div class = "field">
+                            <label> Mobile No.</label>
+                            <input type="text" name = "mobileNo" value="{{$employer -> mobileNo}}">
+                        </div>
+                        <div class = "field">
+                            <label> Address </label>
+                            <textarea name = "address">{{$employer -> address}}</textarea>
+                        </div>
+                        <div class = "field">
+                            <label> Company Name </label>
+                            <input type="text" name = "companyName" value="{{$employer -> companyName}}">
+                        </div>                        </div>
                     </div>
-                    <div class="ui container segment">
-                        <h2 class = "ui diving header">Personal Info</h2>
-                            <div class = "two fields">
-                                <div class = "field">
-                                    <label> First Name </label>
-                                    <input type="text" name = "employerFirstName">
-                                </div>
-                                <div class = "field">
-                                    <label> Last Name</label>
-                                    <input type="text" name = "employerLastName">
-                                </div>
-                            </div>
-                            <div class = "field">
-                                <label> Email</label>
-                                <input type="text" name = "employerEmail">
-                            </div>
-                            <div class = "field">
-                                <label> Mobile No.</label>
-                                <input type="text" name = "employerMobileNo">
-                            </div>
-                            <div class = "field">
-                                <label> Address </label>
-                                <textarea name = "employerAddress"></textarea>
-                            </div>
-                            <div class = "field">
-                                <label>Company Name </label>
-                                <input type="text" name = "companyName">
-                            </div>
-                        </div>
-                    <div class="ui button" tabindex="0">Update</div>
+                    <button class="ui left foated blue large button" type="submit">
+                            UPDATE
+                    </button>            
                 </form>
         </div>
     </div>

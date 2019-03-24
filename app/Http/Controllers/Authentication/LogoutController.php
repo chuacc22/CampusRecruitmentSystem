@@ -13,9 +13,15 @@ class LogoutController extends Controller
     function logout(){
         Session::forget('email');
         if (Session::get('role')=="student"){
+            Session::forget('firstName');
+            Session::forget('lastName');
+            Session::forget('id');
             Session::forget('role');
             return view('/authentication/studentLogin');
         }else if (Session::get('role')=="employer"){
+            Session::forget('firstName');
+            Session::forget('lastName');
+            Session::forget('id');
             Session::forget('role');
             return view('/authentication/employerLogin');
         }else{

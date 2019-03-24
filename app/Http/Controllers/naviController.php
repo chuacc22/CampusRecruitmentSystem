@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
+use App\Job;
 
 class naviController extends Controller
 {
@@ -48,8 +49,22 @@ class naviController extends Controller
         return view('authentication.employerLogin'); 
     }
 
-    function employerPostJob(){
+    function employerManageJob(){
         // return view('employer.employerPostJob');
+        if (Session::has('email')){
+            if (Session::get('role')=='employer'){
+                $employerID = Session::get('id');
+                $job = Job::where('employerID', '=', $employerID)
+                    -> orderBy('title') -> paginate(20);
+
+                return view('employer.employerManageJob', compact('job'));
+            }
+        }
+        return view('authentication.employerLogin'); 
+    }
+    
+    function employerPostJob(){
+        // return view('employer.employerUpdateProfile');
         if (Session::has('email')){
             if (Session::get('role')=='employer'){
                 return view('employer.employerPostJob');
@@ -57,7 +72,7 @@ class naviController extends Controller
         }
         return view('authentication.employerLogin'); 
     }
-    
+
     function employerUpdateProfile(){
         // return view('employer.employerUpdateProfile');
         if (Session::has('email')){

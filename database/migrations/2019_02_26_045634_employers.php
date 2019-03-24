@@ -15,7 +15,7 @@ class Employers extends Migration
     {
         Schema::create('employers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('employerID');
+            $table->increments('id');
             $table->char('status', 1)->index(); //use 1 or 2 (determine active or block)
             $table->string('password', 15)->index(); 
             $table->string('firstName',20 )->index();

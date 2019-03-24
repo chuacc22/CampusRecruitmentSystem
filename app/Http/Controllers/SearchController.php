@@ -29,7 +29,19 @@ class SearchController extends Controller
 
     public function searchCompany($id){
         $job['job'] = Job::find($id);
-        $job['job'] = DB::select('select * from jobs where id = ? ', [$id]);
         return view('/student/companyPage',$job);
+    }
+
+    public function employerViewJob($id){
+        $employerID = Session::get('id');
+        $job = Job::where('employerID', $employerID)->find($id);
+        // $job = Employer::where('employerID', $employer)->first(); 
+
+        if ($job){
+            return view('/employer/employerViewJob')->with('job',$job);
+            // return view('/employer/employerViewJob',$job);
+        }else             
+            return view('/authentication/employerLogin');
+
     }
 }

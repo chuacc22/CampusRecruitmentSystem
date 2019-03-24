@@ -9,7 +9,6 @@
         <!-- header --> 
         @include('layout.header')
         @include('layout.navigation')
-        {{-- @foreach ($student as $value) --}}
         <div id = "studentApplicationFormPage" class="ui container">
             <form class = "ui form">
                 <div class="ui container segment">
@@ -93,7 +92,6 @@
                     </button>            
                 </form>
             </div>
-        {{-- @endforeach --}}
     </div>
 </body>
 <script>

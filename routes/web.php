@@ -11,13 +11,13 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('student/companyPage');
-// });
-
 Route::get('/', function () {
-    return view('authentication/studentLogin');
+    return view('employer/employerManageJob');
 });
+
+// Route::get('/', function () {
+//     return view('authentication/studentLogin');
+// });
 
 Auth::routes();
 
@@ -42,13 +42,29 @@ Route::get('/authentication/adminLogin', 'naviController@adminLogin') -> name('a
 //SEARCH
 Route::get('/searchedResult', 'SearchController@search') -> name('searchedResult');
 Route::get('/student/companyPage/{id}', 'SearchController@searchCompany')-> name('searchedCompany');
+Route::get('/employer/employerViewJob/{id}', 'SearchController@employerViewJob') -> name('employerViewJob.navi');
 
-
+//UpdateStudentProfile
 Route::get('/student/studentUpdateProfile', 'UpdateController@searchStudentProfile') -> name('studentSearchProfile.navi');
 Route::post('/student/studentUpdateProfile', 'UpdateController@updateStudentProfile') -> name('studentUpdateProfile.navi');
+
+//UpdateEmployerProfile
+Route::get('/employer/employerUpdateProfile', 'UpdateController@searchEmployerProfile') -> name('employerSearchProfile.navi');
+Route::post('/employer/employerUpdateProfile', 'UpdateController@updateEmployerProfile') -> name('employerUpdateProfile.navi');
+//UpdateEmployerJob
+Route::get('/employer/employerEditJob/{id}', 'UpdateController@matchJobPage') -> name('matchJobPage.navi');
+Route::post('/employer/employerEditJob/{id}', 'UpdateController@employerEditJob') -> name('employerEditJob.navi');
+
+//CreateNewJob
+Route::get('/employer/employerPostJob', 'naviController@employerPostJob') -> name('employerPostJob.navi');
+Route::post('/employer/employerPostJob', 'CreateController@employerCreateJob') -> name('employerPostJob.navi');
+
+//DeleteJob
+Route::delete('/employer/employerDeleteJob/{id}', 'DeleteController@employerDeleteJob') -> name('employerDeleteJob.navi');
+
+
 Route::get('/student/studentMyJob', 'naviController@studentMyJob') -> name('studentMyJob.navi');
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');
 Route::get('/employer/employerInbox', 'naviController@employerInbox') -> name('employerInbox.navi');
-Route::get('/employer/employerPostJob', 'naviController@employerPostJob') -> name('employerPostJob.navi');
-Route::get('/employer/employerUpdateProfile', 'naviController@employerUpdateProfile') -> name('employerUpdateProfile.navi');
+Route::get('/employer/employerManageJob', 'naviController@employerManageJob') -> name('employerManageJob.navi');

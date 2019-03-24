@@ -63,7 +63,7 @@ class LoginController extends Controller
                 Session::put('lastName', $employer->lastName);
                 Session::put('firstName', $employer->firstName);
                 Session::put('role', 'employer');
-                return redirect('/employer/employerPostJob');
+                return redirect('/employer/employerManageJob');
             }else{
                 return back()->with('error', 'Wrong Password');
             }
