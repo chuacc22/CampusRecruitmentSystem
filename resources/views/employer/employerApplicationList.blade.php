@@ -8,24 +8,26 @@
     <div class = "ui container fuild" >
         <!-- header --> 
         @include('layout.header')
-        @include('layout.navigation')
-        <div id = "studentMyJob">
+        @include('layout.employerNavi')
+        <div id = "HomePage">
             <div class="ui container segment" id = "MyJob">
-                <table class="ui celled striped table">
+                <table class="ui celled stripped table">
                     <thead>
                         <tr>
                             <th class="three wide">Date</th>
-                            <th>Employer/Company</th>
-                            <th class="three wide">Status</th>
+                            <th>Applicant Name</th>
+                            <th>Course / Programme</th>
+                            <th class ="three wide">Status</th>
                         </tr>
-                        </thead>
+                    </thead>
                     <tbody>
                         <?php $i=0 ?>
                         @foreach($applications as $value)
                         <tr>
                             <td>12/2/2019</td>
-                        <td>{{$employers[$i]->lastName}} {{$employers[$i]->firstName}} - {{$employers[$i]->companyName}}</td>
-                            <td>{{$value->empAppStatus}}</td>
+                        <td><a href="/employer/viewStudentProfile/{{$students[$i]->id}}">{{$students[$i]->lastName}} {{$students[$i]->firstName}}<a></td>
+                            <td>{{$students[$i]->course}}</td>
+                            <td>{{$value->stuAppStatus}}</td>
                         </tr>
                         <?php $i++ ?>
                         @endforeach

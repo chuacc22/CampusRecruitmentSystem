@@ -15,32 +15,25 @@
         <!-- header --> 
         @include('layout.header')
         @include('layout.navigation')
-        <div id = "studentApplication" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentApplication/{{$job->id}}">
-                {{ csrf_field() }}
+        <div id = "studentReplyInbox" class="ui container">
+            <form class = "ui form" method="POST" action="{{URL::route('searchedResult')}}">
                 <div class="ui raised very padded text container segment">
-                <h2 class = "ui diving header">Application</h2>
+                <h2 class = "ui diving header">Reply</h2>
                     <div class = "field">
-                    <b> To: </b>
-                    {{$employer->lastName}} {{$employer->firstName}} ({{$employer->email}}) - {{$employer->companyName}}
+                        <h3><b> To: </b></h3>
+                        <h3></h3>
                     </div>
                     <div class = "field">
-                    <b> From: </b>
-                    {{$student->lastName}} {{$student->firstName}} ({{$student->email}})
+                        <h3><b> From: </b></h3>
+                        <h3></h3>
                     </div>
                     <div class = "field">
-                        <textarea name = "applyDesc"></textarea>
-                    </div>
-                    <div class = "field">
-                        <label>Other Attachment<label>
-                        <input type = "file" name="pdfFile">
-                    </div>
-                    <div class = "field">
-                        <label>Resume</label>
-                        <input type = "file" name="resumePDF">
+                        <textarea name = "letterDesc"></textarea>
                     </div>
                     <button class="ui left foated blue large button" type="submit">
-                        Send
+                        <i class="reply icon"></i>
+                            Send
+                        </i>
                     </button>
                 </div>
             </form>

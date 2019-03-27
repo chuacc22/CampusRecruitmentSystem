@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('employer/employerManageJob');
+    return view('student/studentApplication');
 });
 
 // Route::get('/', function () {
@@ -62,8 +62,19 @@ Route::post('/employer/employerPostJob', 'CreateController@employerCreateJob') -
 //DeleteJob
 Route::delete('/employer/employerDeleteJob/{id}', 'DeleteController@employerDeleteJob') -> name('employerDeleteJob.navi');
 
+//application
+Route::get('/student/studentApplication/{id}', 'ApplicationController@getApplicationDetails');
+Route::post('/student/studentApplication/{id}', 'ApplicationController@sendApplication');
 
-Route::get('/student/studentMyJob', 'naviController@studentMyJob') -> name('studentMyJob.navi');
+//MYJOB
+Route::get('/student/studentMyJob', 'ApplicationController@getApplicationList') -> name('studentMyJob.navi');
+
+//EmployerApplicationList
+Route::get('/employer/employerApplicationList', 'ApplicationController@getApplicationList') -> name('employerApplicationList.navi');
+
+//EmployerViewStudentProfile /employer/viewStudentProfile/
+Route::get('/employer/viewStudentProfile/{id}', 'ApplicationController@getStudentProfile');
+
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');
 Route::get('/employer/employerInbox', 'naviController@employerInbox') -> name('employerInbox.navi');

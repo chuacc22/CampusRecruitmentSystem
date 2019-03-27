@@ -26,41 +26,40 @@
         <!-- header --> 
         @include('layout.header')
         @include('layout.navigation')
-        @foreach ($job as $value)
             <div class="ui container segment">
                 <table class = "ui very basic table">
                 <tbody>
                     <tr>
-                        <td><h2><b>{{$value -> companyName}}</b></h2></td>
+                        <td><h2><b>{{$job -> companyName}}</b></h2></td>
                         <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}"> </td>
                     </tr>
                     <tr>
                         <td colspan = "2">
                             <h3>JOB DESCRIPTION</h3>
-                            <div class="myPre" style="">{{$value -> jobDesc}}</div>
+                            <div class="myPre" style="">{{$job -> jobDesc}}</div>
                         <td>
                     </tr>
                     <tr>
                         <td colspan = "2">
                             <h3>Requirements</h3>
-                            <pre class="myPre">{{$value -> requirement}}</pre>
+                            <pre class="myPre">{{$job -> requirement}}</pre>
                         <td>
                     </tr>
                     <tr>
                         <td colspan = "2">
                             <h3>We're looking for :</h3>
-                            <pre class="myPre">{{$value -> lookingFor}}</pre>
+                            <pre class="myPre">{{$job -> lookingFor}}</pre>
                         <td>
                     </tr>
                     <tr>
                         <div class="ui two column stackable center aligned grid">
                             <td style="width:50%" valign="top" >
                                 <h3>Company Overview</h3>
-                                <br>{{$value -> companyOverview}}
+                                <br>{{$job -> companyOverview}}
                             </td>
                             <td style="width:50%; border-left: 1px solid #e8e9e9;" valign="top">
                                 <h3>Company Snapshot</h3>
-                                <pre class="myPre">{{$value -> companySnapshot}}</pre>
+                                <pre class="myPre">{{$job -> companySnapshot}}</pre>
                             </td>
                         </div>
                     </tr>
@@ -68,25 +67,29 @@
                         <td valign="top">
                             <h3>WORK LOCATION</h3>
                             <b>Address</b>
-                            <br>{{$value -> address}}, 
-                            <br> {{$value -> district}}, {{$value -> state}}
+                            <br>{{$job -> address}}, 
+                            <br> {{$job -> district}}, {{$job -> state}}
 
                         </td>
                         <td valign="top">
                             <h3>Contact Us</h3>
-                            <pre class="myPre">{{$value -> contactUs}}</pre>
+                            <pre class="myPre">{{$job -> contactUs}}</pre>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="ui left foated blue large button" style="margin-left: 42%;" type="submit">
-                APPLY NOW 
-            </button>
+            <form method="get" action="/student/studentApplication/{{$job->id}}">
+                <button class="ui left foated blue large button" style="margin-left: 42%;" type="submit">
+                    APPLY NOW 
+                </button>
+            </form>
          </div>
-            
-        @endforeach
     </div>
-    
 </body>
 <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
 </script>
