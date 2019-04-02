@@ -37,22 +37,16 @@
                 {{ csrf_field() }}
                 <div class="ui container segment">
                     <h2 class = "ui diving header">Personal Info</h2>
-                        <div class = "two fields">
-                            <div class = "field">
-                                <label> First Name </label>
-                            <input type="text" name = "firstName" value="{{$student -> firstName}}">
-                            </div>
-                            <div class = "field">
-                                <label> Last Name</label>
-                                <input type="text" name = "lastName" value="{{$student -> lastName}}">
-                            </div>
+                        <div class = "field">
+                            <label> Name </label>
+                            <input type="text" name = "name" value="{{$student -> name}}">
                         </div>
                         <div class = "field">
-                            <label> Email</label>
+                            <label> Email </label>
                             <input type="text" name = "email" value="{{$student -> email}}">
                         </div>
                         <div class = "field">
-                            <label> Mobile No.</label>
+                            <label> Mobile No. </label>
                             <input type="text" name = "mobileNo" value="{{$student -> mobileNo}}">
                         </div>
                         <div class = "field">

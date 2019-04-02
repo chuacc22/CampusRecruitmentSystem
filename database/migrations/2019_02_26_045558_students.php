@@ -19,8 +19,7 @@ class Students extends Migration
             $table->char('studentID', 7)->unique();
             $table->char('status', 1)->index(); //use 1 or 2 (determine active or block)
             $table->string('password', 15)->index(); 
-            $table->string('firstName',20 )->index();
-            $table->string('lastName', 40)->index();
+            $table->string('name', 50)->index();
             $table->string('email', 60)->index();
             $table->string('mobileNo',11)->index();
             $table->text('address')->nullable();

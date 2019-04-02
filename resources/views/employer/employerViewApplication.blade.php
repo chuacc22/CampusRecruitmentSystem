@@ -14,10 +14,8 @@
     <div class = "ui container fuild" >
         <!-- header --> 
         @include('layout.header')
-        @include('layout.navigation')
-        <div id = "studentApplication" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentApplication/{{$job->id}}">
-                {{ csrf_field() }}
+        @include('layout.employerNavi')
+        <div id = "employerViewApplication" class="ui container">
                 <div class="ui raised very padded text container segment">
                 <h2 class = "ui diving header">Application</h2>
                     <div class = "field">
@@ -28,22 +26,22 @@
                     <b> From: </b>
                     {{$student->name}} ({{$student->email}})
                     </div>
-                    <div class = "field">
-                        <textarea name = "applyDesc"></textarea>
+                    <div class = "ui segment">
+                        <b>Application Description :</b>
+                        <pre class="myPre">{{$application -> applyDesc}}</pre>
                     </div>
                     <div class = "field">
                         <label>Other Attachment<label>
-                        <input type = "file" name="pdfFile">
                     </div>
                     <div class = "field">
                         <label>Resume</label>
-                        <input type = "file" name="resumePDF">
                     </div>
-                    <button class="ui left foated blue large button" type="submit">
-                        Send
-                    </button>
+                    <form >
+                        <button class="ui left foated blue large button" type="submit">
+                        Reply Message
+                        </button>
+                    </form>
                 </div>
-            </form>
         </div>
     </div>
 </body>

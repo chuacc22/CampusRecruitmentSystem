@@ -13,10 +13,11 @@
             <div class="ui raised very padded text container segment">
                 <form class = "ui form"  method="POST" action="{{url('/login/checkAdminLogin')}}">
                     {{ csrf_field() }}
-                    @if(isset(Auth::user()->email))
-                        <script>
-                            window.location = "/login/successAdminlogin";
-                        </script>
+                    @if($message = \Session::get('error'))
+                        <div class="alert-block">
+                            <i class="material-icons" size="20" style="color:red">error</i>
+                            <strong>{{$message}}</strong></li>
+                        </div>
                     @endif
                     <h2 class = "ui center aligned diving header"> Admin Login </h2>
                     <div class = "field">

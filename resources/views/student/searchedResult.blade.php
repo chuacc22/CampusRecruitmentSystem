@@ -40,7 +40,7 @@
             </form>
             @if($job != null)
                 @if ($job->isEmpty())
-                    <h3>No job found...</h3>
+                    <h3>No Matched Result Found...</h3>
                 @else
                     @include('/student/searchedResultTable')
                 @endif

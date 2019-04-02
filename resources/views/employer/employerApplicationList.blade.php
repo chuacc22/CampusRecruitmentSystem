@@ -25,9 +25,9 @@
                         @foreach($applications as $value)
                         <tr>
                             <td>12/2/2019</td>
-                        <td><a href="/employer/viewStudentProfile/{{$students[$i]->id}}">{{$students[$i]->lastName}} {{$students[$i]->firstName}}<a></td>
+                        <td><a href="/employer/employerViewApplication/{{$value->id}}">{{$students[$i]->name}}<a></td>
                             <td>{{$students[$i]->course}}</td>
-                            <td>{{$value->stuAppStatus}}</td>
+                            <td>{{getApplicationStatus($value->applicationStatus)}} <i class="edit icon"></i></td>
                         </tr>
                         <?php $i++ ?>
                         @endforeach
@@ -37,6 +37,23 @@
         </div>
     </div>
 </body>
-<script>
+<?php
+    function getApplicationStatus($status){
 
-</script>
+        if ($status == 1){
+            echo '<p style="color: orange; text-align: center">Pending</p>';
+        }else if ($status == 2){
+            echo '<p style="color: blue; text-align: center">Interview Invitation</p>';
+        }else if ($status == 3){
+            echo '<p style="color: orange; text-align: center">Reviewing</p>';
+        }else if ($status == 4){
+            echo '<p style="color: green; text-align: center">Offer Letter Sent</p>';
+        }else if ($status == 5){
+            echo '<p style="color: red; text-align: center">Rejected by Student</p>';
+        }else if ($status == 6){
+            echo '<p style="color: red; text-align: center">Rejected by Employer</p>';
+        }else{
+            return "Null";
+        }
+    }
+?>

@@ -13,12 +13,6 @@
             <div class="ui raised very padded text container segment">
                 <form class = "ui form"  method="POST" action="{{url('/login/checkLogin')}}">
                         {{ csrf_field() }}
-                        @if(isset(Auth::user()->email))
-                            <script>
-                                window.location = "/login/successlogin";
-                            </script>
-                        @endif
-                
                         @if($message = \Session::get('error'))
                             <div class="alert-block">
                                 <i class="material-icons" size="20" style="color:red">error</i>

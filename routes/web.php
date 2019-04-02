@@ -24,7 +24,7 @@ Auth::routes();
 //login authentication
 Route::post('/login/checkLogin', 'Authentication\LoginController@checkStudentLogin');
 Route::post('/login/checkEmployerLogin', 'Authentication\LoginController@checkEmployerLogin');
-Route::get('/login/adminLogin', 'Authentication\LoginController@checkLogin');
+Route::post('/login/checkAdminLogin', 'Authentication\LoginController@checkAdminLogin');
 Route::get('/login/logout', 'Authentication\LogoutController@logout');
 
 
@@ -71,9 +71,20 @@ Route::get('/student/studentMyJob', 'ApplicationController@getApplicationList') 
 
 //EmployerApplicationList
 Route::get('/employer/employerApplicationList', 'ApplicationController@getApplicationList') -> name('employerApplicationList.navi');
+Route::get('/employer/employerViewApplication/{id}', 'ApplicationController@getApplicationContent');
 
 //EmployerViewStudentProfile /employer/viewStudentProfile/
 Route::get('/employer/viewStudentProfile/{id}', 'ApplicationController@getStudentProfile');
+
+//Admin
+Route::get('/admin/adminManageEmployer', 'EmployerController@getEmployerList')->name('adminManageEmployer.navi');
+Route::get('/admin/adminManageStudent', 'StudentController@getStudentList')->name('adminManageStudent.navi');
+
+Route::get('/admin/adminViewStudentDetail/{id}', 'StudentController@getStudentDetail');
+Route::get('/admin/adminViewEmployerDetail/{id}', 'EmployerController@getEmployerDetail');
+Route::get('/admin/adminViewNewSpecialList', 'ApplicationController@getNewSpecialApplicationList') -> name('adminViewNewSpecialList.navi');
+Route::get('/admin/adminViewSentSpecialList', 'ApplicationController@getSentSpecialApplicationList') -> name('adminViewSentSpecialList.navi');
+Route::get('/admin/adminViewApplication/{id}', 'ApplicationController@getApplicationContent');
 
 Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');

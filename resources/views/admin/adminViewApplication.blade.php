@@ -14,10 +14,8 @@
     <div class = "ui container fuild" >
         <!-- header --> 
         @include('layout.header')
-        @include('layout.navigation')
-        <div id = "studentApplication" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentApplication/{{$job->id}}">
-                {{ csrf_field() }}
+        @include('layout.adminNavi')
+        <div id = "adminViewApplication" class="ui container">
                 <div class="ui raised very padded text container segment">
                 <h2 class = "ui diving header">Application</h2>
                     <div class = "field">
@@ -28,22 +26,31 @@
                     <b> From: </b>
                     {{$student->name}} ({{$student->email}})
                     </div>
-                    <div class = "field">
-                        <textarea name = "applyDesc"></textarea>
+                    <div class = "ui segment">
+                        <h3>Application Description :</h3>
+                        <pre class="myPre">{{$application -> applyDesc}}</pre>
                     </div>
                     <div class = "field">
                         <label>Other Attachment<label>
-                        <input type = "file" name="pdfFile">
                     </div>
                     <div class = "field">
                         <label>Resume</label>
-                        <input type = "file" name="resumePDF">
                     </div>
-                    <button class="ui left foated blue large button" type="submit">
-                        Send
-                    </button>
+                    <div>
+                        <form >
+                            <button class="ui left foated orange large button" type="submit">
+                                Send Message to Student
+                            </button>
+                        </form>
+                    </div><br>
+                    <div>
+                        <form >
+                            <button class="ui left foated green large button" type="submit">
+                                Send Application to Employer
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </form>
         </div>
     </div>
 </body>

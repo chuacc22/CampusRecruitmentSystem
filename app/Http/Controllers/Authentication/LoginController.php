@@ -5,6 +5,7 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Student;
 use App\Employer;
+use App\Admin;
 use Validator;
 use Session;
 use Illuminate\Http\Request;
@@ -30,20 +31,15 @@ class LoginController extends Controller
 
                 Session::put('email' , $student->email);
                 Session::put('id', $student->id);
-                Session::put('lastName', $student->lastName);
-                Session::put('firstName', $student->firstName);
+                Session::put('name', $student->name);
                 Session::put('role', 'student');
                 return redirect('/student/searchedResult');
             }else{
-                return back()->with('error', 'Wrong Password');
+                return back()->with('error', 'Invalid User or Password');
             }
         }else {
-            return back()->with('error', 'No email exist');
+            return back()->with('error', 'Invalid User or Password');
         }
-    }
-
-    function successlogin(){
-        return view('/student/searchedResult');
     }
 
     function checkEmployerLogin(Request $request){
@@ -60,20 +56,40 @@ class LoginController extends Controller
                 //set session
                 Session::put('email' , $employer->email);
                 Session::put('id', $employer->id);
-                Session::put('lastName', $employer->lastName);
-                Session::put('firstName', $employer->firstName);
+                Session::put('name', $employer->name);
                 Session::put('role', 'employer');
                 return redirect('/employer/employerManageJob');
             }else{
-                return back()->with('error', 'Wrong Password');
+                return back()->with('error', 'Invalid User or Password');
             }
         }else {
-            return back()->with('error', 'No email exist');
+            return back()->with('error', 'Invalid User or Password');
         }
     }
 
-    function successEmployerLogin(){
-        return view('/employer/employerPostJob');
+    function checkAdminLogin(Request $request){
+
+        $this -> validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        
+        $admin = Admin::where('email', $request->email)->first(); 
+
+        if($admin){
+            if($request->password==$admin->password){
+                //set session
+                Session::put('email' , $admin->email);
+                Session::put('id', $admin->id);
+                Session::put('name', $admin->name);
+                Session::put('role', 'admin');
+                return redirect('/admin/adminManageEmployer');
+            }else{
+                return back()->with('error', 'Invalid Admin user or Password');
+            }
+        }else {
+            return back()->with('error', 'Invalid Admin user or Password');
+        }
     }
 
 }

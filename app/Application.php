@@ -11,10 +11,11 @@ class Application extends Model
     protected $fillable = [
         'id',
         'jobID',
+        'mouStatus',
+        'showApplication',
         'stuID',
-        'stuAppStatus',
+        'applicationStatus',
         'employerID',
-        'empAppStatus',
         'applyDesc',
         'pdfFile'
     ];

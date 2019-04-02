@@ -25,8 +25,7 @@ class UpdateController extends Controller
         if($student){
             // DB::Table('students')->where('id',$id)->update(
             // array(
-            //         'firstName' =>  $request->firstName,
-            //         'lastName' => $request->lastName,
+            //         'name' => $request->name,
             //         'email' => $request->email,
             //         'mobileNo' => $request->mobileNo,
             //         'address' => $request->address,

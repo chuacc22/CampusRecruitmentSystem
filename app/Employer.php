@@ -12,11 +12,11 @@ class Employer extends Model
         'id', 
         'status',
         'password',
-        'firstName', 
-        'lastName',
+        'name',
         'email',
         'mobileNo',
         'address',
-        'companyName'
+        'companyName',
+        'mouStatus'
     ];
 }
