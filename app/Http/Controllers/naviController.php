@@ -19,15 +19,15 @@ class naviController extends Controller
         return view('authentication.studentLogin');
     }
 
-    function studentInbox(){
-        // return view('student.studentInbox');
-        if (Session::has('email')){
-            if (Session::get('role')=='student'){
-                return view('student.studentInbox');
-            }
-        }
-        return view('authentication.studentLogin'); 
-    }
+    // function studentInbox(){
+    //     // return view('student.studentInbox');
+    //     if (Session::has('email')){
+    //         if (Session::get('role')=='student'){
+    //             return view('student.studentInbox');
+    //         }
+    //     }
+    //     return view('authentication.studentLogin'); 
+    // }
 
     function searchedResult(){
         if (Session::has('email')){

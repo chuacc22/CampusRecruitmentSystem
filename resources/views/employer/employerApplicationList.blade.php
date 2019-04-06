@@ -52,6 +52,8 @@
             echo '<p style="color: red; text-align: center">Rejected by Student</p>';
         }else if ($status == 6){
             echo '<p style="color: red; text-align: center">Rejected by Employer</p>';
+        }else if ($status == 7){
+            echo '<p style="color: red; text-align: center">Rejected by Admin</p>';
         }else{
             return "Null";
         }

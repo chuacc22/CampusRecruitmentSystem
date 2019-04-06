@@ -19,25 +19,24 @@
                             <th>Title</th>
                         </tr>
                         </thead>
-                    <tbody>
-                        <tr>
-                            <td>10/2/2019</td>
-                            <td>Chaintope Malaysia</td>
-                            <td>Application </td>
-                        </tr>
-                            <div id = "inboxTables">
-                                {{-- <tr>
-                                    <td> test</td>
-                                    <td>Initial commit</td>
-                                    <td>10 hours ago</td>
-                                </tr> --}}
-                            </div>
-                    </tbody>
+                        {{-- <tbody>
+                            @foreach($senders as $value)
+                            <tr>
+                                <td>12/2/2019</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @endforeach
+                        </tbody> --}}
                 </table>
             </div>
         </div>
     </div>
 </body>
 <script>
-
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
 </script>

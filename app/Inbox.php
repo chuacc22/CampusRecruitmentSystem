@@ -12,6 +12,8 @@ class Inbox extends Model
         'id',
         'stuID',
         'employerID',
+        'adminID',
+        'roleSent',
         'letterDesc',
         'pdfFile'
     ];

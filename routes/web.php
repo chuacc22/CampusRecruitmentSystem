@@ -86,7 +86,9 @@ Route::get('/admin/adminViewNewSpecialList', 'ApplicationController@getNewSpecia
 Route::get('/admin/adminViewSentSpecialList', 'ApplicationController@getSentSpecialApplicationList') -> name('adminViewSentSpecialList.navi');
 Route::get('/admin/adminViewApplication/{id}', 'ApplicationController@getApplicationContent');
 
-Route::get('/student/studentInbox', 'naviController@studentInbox') -> name('studentInbox.navi');
+Route::get('/student/studentInbox', 'InboxController@getStudentInboxList') -> name('studentInbox.navi');
+
+
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');
 Route::get('/employer/employerInbox', 'naviController@employerInbox') -> name('employerInbox.navi');
 Route::get('/employer/employerManageJob', 'naviController@employerManageJob') -> name('employerManageJob.navi');
