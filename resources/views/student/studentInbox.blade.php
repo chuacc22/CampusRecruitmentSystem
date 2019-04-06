@@ -16,18 +16,24 @@
                         <tr>
                             <th class="three wide">Date</th>
                             <th>Employer/Company</th>
-                            <th>Title</th>
                         </tr>
                         </thead>
-                        {{-- <tbody>
-                            @foreach($senders as $value)
+                        <tbody>
+                            @foreach($inboxs as $data)
                             <tr>
                                 <td>12/2/2019</td>
-                                <td></td>
-                                <td></td>
+                                @if($data->employerID != 0)
+                                    @foreach($sendersEmployer as $employer)
+                                        @if($employer->id == $data->employerID)
+                                            <td>{{$employer->companyName}}</td>
+                                        @endif
+                                    @endforeach
+                                @else
+                                
+                                @endif
                             </tr>
                             @endforeach
-                        </tbody> --}}
+                        </tbody>
                 </table>
             </div>
         </div>
@@ -40,3 +46,4 @@
         alert(msg);
     }
 </script>
+

@@ -35,25 +35,49 @@ class InboxController extends Controller{
             $employers = collect();
             $senders = collect();
             $sendersEmployer = collect();
+            $sendersEmployerId = collect();
             $sendersAdmin = collect();
+            $sendersAdminId = collect();
 
             foreach ($inboxs as $data){
-                $employer = Employer::find($data->employerID);
-                $employers->push($employer);
+                if($data->employerID != 0){
+                    $employer = Employer::find($data->employerID);
+                    $employers->push($employer);
+                }
             }
 
             if ($employers != null){
-                foreach ($employers as $data){
+                foreach ($employers as $key => $data){
                     $employerID = $data->id;
-                    if(!($sendersEmployer->contains($employerID))){
+                    if(!($sendersEmployerId->contains($employerID))){
+                        $sendersEmployerId->push($employerID);
                         $employer = Employer::find($data->id);
                         $sendersEmployer->push($employer);
-                        return view('/student/studentInbox')->with('alert','okay');
+                        // return view('/student/studentInbox')->with('alert','okay');
                     }
                 }
             }
 
-            return view('/student/studentInbox')->with('sendersEmployer',$sendersEmployer)->with('alert','not passing');
+            foreach ($inboxs as $data){
+                if($data->adminID != 0){
+                    $admin = Admin::find($data->adminID);
+                    $admins->push($admin);
+                }
+            }
+
+            if ($admins != null){
+                foreach ($admins as $key => $data){
+                    $adminID = $data->id;
+                    if(!($sendersAdminId->contains($adminID))){
+                        $sendersAdminId->push($adminID);
+                        $admin = Admin::find($data->id);
+                        $sendersAdmin->push($admin);
+                        // return view('/student/studentInbox')->with('alert','okay');
+                    }
+                }
+            }
+
+            return view('/student/studentInbox')->with('sendersEmployer',$sendersEmployer)->with('inboxs',$inboxs)->with('sendersAdmin',$sendersAdmin);
         }
         // return view('/student/studentInbox')->with('alert','all not passing');
         // return redirect()->route('studentInbox.navi')->with('alert', 'passing1');
