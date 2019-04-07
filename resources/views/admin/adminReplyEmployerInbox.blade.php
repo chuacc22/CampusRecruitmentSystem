@@ -7,8 +7,7 @@
         }
 
         .msgText{
-            word-wrap:break-word; 
-            white-space: pre-line;
+            word-wrap:break-word; white-space: pre-line;
         }
 
         .text-content{
@@ -24,9 +23,9 @@
     <div class = "ui container fuild" >
         <!-- header --> 
         @include('layout.header')
-        @include('layout.navigation')
-        <div id = "studentReplyInbox" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentReplyInbox/{{$employer->id}}">
+        @include('layout.adminNavi')
+        <div id = "adminReplyEmployerInbox" class="ui container">
+            <form class = "ui form" method="post" action="/admin/adminReplyEmployerInbox/{{$employer->id}}">
                 {{ csrf_field() }}
                 <div class="ui very padded text container segment">
                     <div>
@@ -42,7 +41,7 @@
                 @if ($inboxContents->isEmpty())
                      <h3>No Msg Found</h3>
                 @else
-                    @include('/student/studentReplyInboxTable')
+                    @include('/admin/adminReplyEmployerInboxTable')
                 @endif
             @endif        
         </div>

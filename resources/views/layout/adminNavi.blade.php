@@ -9,7 +9,7 @@
                 <a class="item" href="{{URL::route('adminViewSentSpecialList.navi')}}"> Sent Applications </a>
               </div>
             </div>
-          <a class=" item">Inbox</a>
+          <a href="{{URL::route('adminInbox.navi')}}" class="item">Inbox </a>
           <div class="ui simple dropdown right item">{{Session::get('name')}} 
             <i class="dropdown icon"></i>
             <div class="menu">

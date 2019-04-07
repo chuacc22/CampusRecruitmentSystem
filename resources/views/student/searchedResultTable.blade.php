@@ -13,7 +13,7 @@
                     <tr>
                         <td colspan = "2">
                             {{$value -> companyOverview}}
-                        <td>
+                        </td>
                     </tr>
                     <tr>
                         <td>We're looking for:

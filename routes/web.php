@@ -86,9 +86,33 @@ Route::get('/admin/adminViewNewSpecialList', 'ApplicationController@getNewSpecia
 Route::get('/admin/adminViewSentSpecialList', 'ApplicationController@getSentSpecialApplicationList') -> name('adminViewSentSpecialList.navi');
 Route::get('/admin/adminViewApplication/{id}', 'ApplicationController@getApplicationContent');
 
+//Inbox
 Route::get('/student/studentInbox', 'InboxController@getStudentInboxList') -> name('studentInbox.navi');
+Route::get('/employer/employerInbox', 'InboxControllerEmployer@getEmployerInboxList') -> name('employerInbox.navi');
+Route::get('/admin/adminInbox', 'InboxControllerAdmin@getAdminInboxList') -> name('adminInbox.navi');
+
+//student
+Route::get('/student/studentReplyInbox/{id}', 'InboxController@getStudentInboxFromEmployer')-> name('studentReplyInbox');
+Route::get('/student/studentReplyAdminInbox/{id}', 'InboxController@getStudentInboxFromAdmin')->name('studentReplyAdminInbox');
+
+Route::post('/student/studentReplyInbox/{id}', 'InboxController@studentSendEmployerMessage');
+Route::post('/student/studentReplyAdminInbox/{id}', 'InboxController@studentSendAdminMessage');
+
+//employer
+Route::get('/employer/employerReplyAdminInbox/{id}', 'InboxControllerEmployer@getEmployerInboxFromAdmin')-> name('AdminReplyInbox.emp');
+Route::get('/employer/employerReplyStudentInbox/{id}', 'InboxControllerEmployer@getEmployerInboxFromStudent')->name('StudentReplyInbox.emp');
+
+Route::post('/employer/employerReplyAdminInbox/{id}', 'InboxControllerEmployer@employerSendAdminMessage');
+Route::post('/employer/employerReplyStudentInbox/{id}', 'InboxControllerEmployer@employerSendStudentMessage');
+
+//admin
+Route::get('/admin/adminReplyEmployerInbox/{id}', 'InboxControllerAdmin@getAdminInboxFromEmployer')-> name('EmployerReplyInbox.adm');
+Route::get('/admin/adminReplyStudentInbox/{id}', 'InboxControllerAdmin@getAdminInboxFromStudent')->name('StudentReplyInbox.adm');
+
+Route::post('/admin/adminReplyEmployerInbox/{id}', 'InboxControllerAdmin@adminSendEmployerMessage');
+Route::post('/admin/adminReplyStudentInbox/{id}', 'InboxControllerAdmin@adminSendStudentMessage');
+
 
 
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');
-Route::get('/employer/employerInbox', 'naviController@employerInbox') -> name('employerInbox.navi');
 Route::get('/employer/employerManageJob', 'naviController@employerManageJob') -> name('employerManageJob.navi');

@@ -8,39 +8,39 @@
     <div class = "ui container fuild" >
         <!-- header --> 
         @include('layout.header')
-        @include('layout.navigation')
+        @include('layout.adminNavi')
         <div id = "HomePage">
-            <div class="ui container segment" id = "studentInbox">
+            <div class="ui container segment" id = "adminInbox">
                 <table class="ui celled striped table">
                     <thead>
                         <tr>
                             <th class="three wide">Date</th>
-                            <th>Employer/Company</th>
+                            <th>StudentName</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($inboxs as $data)
-                                @if($data->employerID != 0)
+                                @if($data->stuID != 0)
+                                    @foreach($sendersStudent as $key => $student)
+                                        @if($student->id == $data->stuID)
+                                            <tr>
+                                                <td>{{$data->created_at->format('d/m/Y')}}</td>
+                                
+                                                <td><a href="/admin/adminReplyStudentInbox/{{$student->id}}">{{$student->name}}</a></td>
+                                                <?php 
+                                                    $sendersStudent->forget($key);
+                                                ?>
+                                        @endif
+                                    @endforeach
+                                @else
                                     @foreach($sendersEmployer as $key => $employer)
                                         @if($employer->id == $data->employerID)
                                             <tr>
                                                 <td>{{$data->created_at->format('d/m/Y')}}</td>
                                 
-                                                <td><a href="/student/studentReplyInbox/{{$employer->id}}">{{$employer->companyName}}</a></td>
+                                                <td><a href="/admin/adminReplyEmployerInbox/{{$employer->id}}">{{$employer->name}}</a></td>
                                                 <?php 
                                                     $sendersEmployer->forget($key);
-                                                ?>
-                                        @endif
-                                    @endforeach
-                                @else
-                                    @foreach($sendersAdmin as $key => $admin)
-                                        @if($admin->id == $data->adminID)
-                                            <tr>
-                                                <td>{{$data->created_at->format('d/m/Y')}}</td>
-                                
-                                                <td><a href="/student/studentReplyAdminInbox/{{$admin->id}}">{{$admin->name}}</a></td>
-                                                <?php 
-                                                    $sendersAdmin->forget($key);
                                                 ?>
                                         @endif
                                     @endforeach

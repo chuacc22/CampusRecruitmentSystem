@@ -15,29 +15,49 @@
                     <thead>
                         <tr>
                             <th class="three wide">Date</th>
-                            <th>Name</th>
-                            <th>Title</th>
+                            <th>StudentName</th>
                         </tr>
                         </thead>
-                    <tbody>
-                        <tr>
-                            <td>10/2/2019</td>
-                            <td>Chua Chang Chyuan</td>
-                            <td>Application </td>
-                        </tr>
-                            <div id = "inboxTables">
-                                {{-- <tr>
-                                    <td> test</td>
-                                    <td>Initial commit</td>
-                                    <td>10 hours ago</td>
-                                </tr> --}}
-                            </div>
-                    </tbody>
+                        <tbody>
+                            @foreach($inboxs as $data)
+                                @if($data->stuID != 0)
+                                    @foreach($sendersStudent as $key => $student)
+                                        @if($student->id == $data->stuID)
+                                            <tr>
+                                                <td>{{$data->created_at->format('d/m/Y')}}</td>
+                                
+                                                <td><a href="/employer/employerReplyStudentInbox/{{$student->id}}">{{$student->name}}</a></td>
+                                                <?php 
+                                                    $sendersStudent->forget($key);
+                                                ?>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @foreach($sendersAdmin as $key => $admin)
+                                        @if($admin->id == $data->adminID)
+                                            <tr>
+                                                <td>{{$data->created_at->format('d/m/Y')}}</td>
+                                
+                                                <td><a href="/employer/employerReplyAdminInbox/{{$admin->id}}">{{$admin->name}}</a></td>
+                                                <?php 
+                                                    $sendersAdmin->forget($key);
+                                                ?>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </tr>
+                            @endforeach
+                        </tbody>
                 </table>
             </div>
         </div>
     </div>
 </body>
 <script>
-
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
 </script>
+

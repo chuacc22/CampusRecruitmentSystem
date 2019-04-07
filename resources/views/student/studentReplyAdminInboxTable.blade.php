@@ -5,7 +5,7 @@
                 <tr>
                     @if($value->roleSent == 3)
                         <td style="width:50%"></td>
-                        <td style="width:50%;" class = "right aligned">
+                        <td style="width:50%" class = "right aligned">
                             <div class="ui grey segment text-content">
                                 <p class="msgText">{{$value->letterDesc}}</p>
                             </div>

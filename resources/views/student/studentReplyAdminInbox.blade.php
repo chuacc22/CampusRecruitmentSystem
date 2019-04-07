@@ -7,8 +7,7 @@
         }
 
         .msgText{
-            word-wrap:break-word; 
-            white-space: pre-line;
+            word-wrap:break-word; white-space: pre-line;
         }
 
         .text-content{
@@ -25,12 +24,12 @@
         <!-- header --> 
         @include('layout.header')
         @include('layout.navigation')
-        <div id = "studentReplyInbox" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentReplyInbox/{{$employer->id}}">
+        <div id = "studentReplyAdminInbox" class="ui container">
+            <form class = "ui form" method="post" action="/student/studentReplyAdminInbox/{{$admin->id}}">
                 {{ csrf_field() }}
                 <div class="ui very padded text container segment">
                     <div>
-                        <h3 class = "ui diving header">To :  {{$employer->name}}</h3>
+                        <h3 class = "ui diving header">To :  {{$admin->name}}</h3>
                         <textarea name = "letterDesc"></textarea>
                         <button class="ui right floated blue large button" type="submit">
                             <i class="reply icon"></i>Send
@@ -42,7 +41,7 @@
                 @if ($inboxContents->isEmpty())
                      <h3>No Msg Found</h3>
                 @else
-                    @include('/student/studentReplyInboxTable')
+                    @include('/student/studentReplyAdminInboxTable')
                 @endif
             @endif        
         </div>

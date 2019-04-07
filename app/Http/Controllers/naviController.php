@@ -39,15 +39,15 @@ class naviController extends Controller
         return view('authentication.studentLogin');   
     }
 
-    function employerInbox(){
-        // return view('employer.employerInbox');
-        if (Session::has('email')){
-            if (Session::get('role')=='employer'){
-                return view('employer.employerInbox');
-            }
-        }
-        return view('authentication.employerLogin'); 
-    }
+    // function employerInbox(){
+    //     // return view('employer.employerInbox');
+    //     if (Session::has('email')){
+    //         if (Session::get('role')=='employer'){
+    //             return view('employer.employerInbox');
+    //         }
+    //     }
+    //     return view('authentication.employerLogin'); 
+    // }
 
     function employerManageJob(){
         // return view('employer.employerPostJob');
