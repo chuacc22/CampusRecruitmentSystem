@@ -13,7 +13,7 @@
           <div class="ui simple dropdown right item">{{Session::get('name')}} 
             <i class="dropdown icon"></i>
             <div class="menu">
-              <a  class="item"> Profile </a>
+              <a href="{{URL::route('adminUpdatePassword.navi')}}" class="item"> Change Password </a>
               <a href="{{url('login/logout')}}" class="item"> Log Out </a>
             </div>
           </div>

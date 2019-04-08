@@ -20,23 +20,24 @@
                 <h2 class = "ui diving header">Application</h2>
                     <div class = "field">
                     <b> To: </b>
-                    {{$employer->name}} ({{$employer->email}}) - {{$employer->companyName}}
+                    <a href="/employer/employerViewStudentDetail/{{$student->id}}">{{$student->name}} ({{$student->email}})</a>
                     </div>
                     <div class = "field">
                     <b> From: </b>
-                    {{$student->name}} ({{$student->email}})
+                    {{$employer->name}} ({{$employer->email}}) - {{$employer->companyName}}
                     </div>
                     <div class = "ui segment">
                         <b>Application Description :</b>
                         <pre class="myPre">{{$application -> applyDesc}}</pre>
                     </div>
                     <div class = "field">
-                        <label>Other Attachment<label>
+                        <a href="/employer/employerDownloadPDF{{$application->pdfFile}}"><u>Other Attachments</u></a>
                     </div>
                     <div class = "field">
-                        <label>Resume</label>
+                        <a href="/employer/employerDownloadResume{{$application->resume}}"><u>Resume</u></a>
                     </div>
-                    <form >
+                    <form method="get" action="/employer/employerReplyStudentInbox/{{$student->id}}">
+                        {{ csrf_field() }}
                         <button class="ui left foated blue large button" type="submit">
                         Reply Message
                         </button>

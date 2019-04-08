@@ -26,7 +26,7 @@
                         <?php $i=0 ?>
                         @foreach($applications as $value)
                         <tr>
-                            <td>12/2/2019</td>
+                            <td>{{$value->updated_at->format('d/m/Y')}}</td>
                             <td><a href="/admin/adminViewApplication/{{$value->id}}">{{$students[$i]->name}}<a></td>
                             <td>{{$students[$i]->course}}</td>
                             <td>{{$employers[$i]->companyName}}</td>
@@ -40,3 +40,10 @@
         </div>
     </div>
 </body>
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
+</script>

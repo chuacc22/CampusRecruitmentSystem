@@ -28,8 +28,19 @@
         @include('layout.adminNavi')
             <div class="ui container segment">
                 <table class = "ui very basic table">
-                <h3>User Status: {{$student->status}}</h3>
+                <h3>User Status:
+                    @if($student->status == 1)
+                        <b style="color:green;">Active</b>
+                    @else
+                        <b style="color:red;">Suspend</b>
+                    @endif
+                <h3>
                 <tbody>
+                    <tr>
+                        <td>
+                        <img style="height: 110px; border:2px solid grey; width:120px" src = "{{$student->profilePic}}">
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <h3>Student Name</h3>
@@ -91,10 +102,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan = "2">
-                            <h3>Resume</h3>
-                            <div class="myPre">{{$student->resume}}</div>
-                        </td>
+                        <td>
+                        @if($student->resume != null)
+                            <div class = "field">
+                                <a href="/download/downloadFile{{$student->resume}}"><h3><u>Resume_pdf</u></h3></a>
+                            </div>
+                        @else
+                            <div class = "field"><b>No Resume Uploaded</b>
+                            </div>
+                        @endif
+                        <td>
                     </tr>
                 </tbody>
             </table>

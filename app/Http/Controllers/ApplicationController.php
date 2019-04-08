@@ -31,6 +31,8 @@ class ApplicationController extends Controller
             $job = Job::find($id);
             $employer = Employer::find($job->employerID);
             $appliedJob = Application::where('jobID', $id)->first();
+            $student=Student::find(Session::get('id'));
+            $exisitngResume = $student->resume;
 
             if($appliedJob){
                 return redirect()->route('searchedCompany',$id)->with('alert', 'Already applied, processing');
@@ -45,12 +47,35 @@ class ApplicationController extends Controller
                     $application->mouStatus = 0;
                     $application->showApplication = 1;
                 }
+                if($request->resume == null){
+                    if($exisitngResume){
+                        $application->resume = $student->resume;
+                    }else{
+                        $application->resume = null;
+                    }
+                }else{
+                    $file = $request->file('resume');
+                    $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                    $file->move('files', $filename);
+                    $application->resume = '/files/' . $filename;
+
+                }
+
+                if($request->pdfFile == null){
+                    $application->pdfFile = null;
+                }else{
+                    $file = $request->file('pdfFile');
+                    $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                    $file->move('files', $filename);
+                    $application->pdfFile = '/files/' . $filename; 
+                }
+
                 $application->stuID = Session::get('id');
                 $application->employerID = $job->employerID;
                 $application->applicationStatus = 1; //1 for applying, 2 for read, 3 for interview, 4 for reviewing, 5 for succcess
                 $application->save();
     
-                return redirect()->route('searchedCompany',$id)->with('alert', 'Application Sent!!!!!!!!');
+                return redirect()->route('searchedCompany.navi',$id)->with('alert', 'Application Sent');
             }
         }
     }
@@ -157,9 +182,25 @@ class ApplicationController extends Controller
             return back()->with('alert', 'Permission denied');
     }
 
-    public function updateApplicationStatus(){
+    public function updateApplicationStatus(Request $request, $id){
         if((Session::get('role'))=="employer"){
-            
+            if($request->applicationStatus == 0){
+                return back()->with('alert','Please select a status'); 
+            }else {
+                $application = Application::find($id);
+                $application->fill($request->all());
+                $application->update();
+                return back()->with('alert','status updated');
+            }
+        }
+    }
+
+    public function updateShowApplicationStatus(Request $request, $id){
+        if((Session::get('role'))=="admin"){
+            $application = Application::find($id);
+            $application->showApplication = 1;
+            $application->update();
+            return redirect()->route('adminViewNewSpecialList.navi',$id)->with('alert','Application Sent to the Employer');
         }
     }
 }

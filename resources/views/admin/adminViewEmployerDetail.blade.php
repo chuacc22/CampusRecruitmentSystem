@@ -28,16 +28,25 @@
         @include('layout.adminNavi')
             <div class="ui container segment">
                 <table class = "ui very basic table">
-                <h3>User Status: {{$employer->status}}</h3>
+                    <h3>User Status:
+                        @if($employer->status == 1)
+                            <b style="color:green;">Active</b>
+                        @else
+                            <b style="color:red;">Suspend</b>
+                        @endif
+                    </h3>
                 <tbody>
+                    <tr>
+                        <td>
+                        <img style="height: 110px; border:2px solid grey; width:120px" src = "{{$employer->profilePic}}">
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <h3>Employer Name</h3>
                             <div class="myPre">{{$employer->name}}</div>
                         </td>
                         <td>
-                            <h3>Employer ID</h3>
-                            <div class="myPre">{{$employer->studentID}}</div>
                         </td>
                     </tr>
                     <tr>
@@ -58,8 +67,13 @@
                     </tr>
                     <tr>
                         <td colspan = "2">
-                            <h3>MOU Status</h3>
-                            <div class="myPre">{{$employer->mouStatus}}</div>
+                            <h3>MOU Status : 
+                                @if($employer->mouStatus == 1)
+                                    <b style="color:green;">Yes</b>
+                                @else
+                                    <b style="color:red;">No</b>
+                                @endif
+                            </h3>
                         </td>
                         </tr>
                 </tbody>
@@ -85,11 +99,11 @@
     </div>
 </body>
 <script>
-    // var msg = '{{Session::get('alert')}}';
-    // var exist = '{{Session::has('alert')}}';
-    // if(exist){
-    //     alert(msg);
-    // }
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
 </script>
 <?php
     function getApplicationStatus($status){

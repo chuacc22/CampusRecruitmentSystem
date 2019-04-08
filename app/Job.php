@@ -23,6 +23,7 @@ class Job extends Model
         'district' ,
         'state' ,
         'contactUs' ,
+        'companyLogo',
         'employerID'
     ];
 }

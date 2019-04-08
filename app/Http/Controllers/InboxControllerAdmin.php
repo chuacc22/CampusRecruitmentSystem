@@ -95,6 +95,16 @@ class InboxControllerAdmin extends Controller{
             $inbox->stuID = 0;
             $inbox->employerID = $id;
             $inbox->roleSent = 1;
+
+            if($request->pdfFile == null){
+                $inbox->pdfFile = null;
+            }else{
+                $file = $request->file('pdfFile');
+                $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                $file->move('files', $filename);
+                $inbox->pdfFile = '/files/' . $filename; 
+            }
+
             $inbox->save();
 
             return redirect()->route('EmployerReplyInbox.adm',$id)->with('alert', 'Message Sent');
@@ -110,6 +120,16 @@ class InboxControllerAdmin extends Controller{
             $inbox->stuID = $id;
             $inbox->employerID = 0;
             $inbox->roleSent = 1;
+
+            if($request->pdfFile == null){
+                $inbox->pdfFile = null;
+            }else{
+                $file = $request->file('pdfFile');
+                $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                $file->move('files', $filename);
+                $inbox->pdfFile = '/files/' . $filename; 
+            }
+            
             $inbox->save();
 
             return redirect()->route('StudentReplyInbox.adm',$id)->with('alert', 'Message Sent');

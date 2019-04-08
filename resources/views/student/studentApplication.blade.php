@@ -16,7 +16,7 @@
         @include('layout.header')
         @include('layout.navigation')
         <div id = "studentApplication" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentApplication/{{$job->id}}">
+            <form class = "ui form" method="post" action="/student/studentApplication/{{$job->id}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="ui raised very padded text container segment">
                 <h2 class = "ui diving header">Application</h2>
@@ -32,12 +32,12 @@
                         <textarea name = "applyDesc"></textarea>
                     </div>
                     <div class = "field">
-                        <label>Other Attachment<label>
-                        <input type = "file" name="pdfFile">
+                        <label><b> Other Attachment </b></label>
+                        <input type="file" name="pdfFile" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
                     </div>
                     <div class = "field">
-                        <label>Resume</label>
-                        <input type = "file" name="resumePDF">
+                        <label><b> Resume </b></label>
+                        <input type="file" name="resume" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
                     </div>
                     <button class="ui left foated blue large button" type="submit">
                         Send

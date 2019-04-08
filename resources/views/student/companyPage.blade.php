@@ -27,11 +27,17 @@
         @include('layout.header')
         @include('layout.navigation')
             <div class="ui container segment">
+                @if($employer->mouStatus==0)
+                <a class="ui labeled icon button" href="/student/studentReplyInbox/{{$job->employerID}}">
+                    <i class="share icon"></i>
+                    Send Message
+                </a>
+                @endif
                 <table class = "ui very basic table">
                 <tbody>
                     <tr>
                         <td><h2><b>{{$job -> companyName}}</b></h2></td>
-                        <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}"> </td>
+                        <td class= "right aligned"><img style="height: 100px; width:160px" src ="{{$job->companyLogo}}"> </td>
                     </tr>
                     <tr>
                         <td colspan = "2">

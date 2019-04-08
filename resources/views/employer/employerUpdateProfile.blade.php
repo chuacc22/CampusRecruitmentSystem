@@ -10,21 +10,22 @@
         @include('layout.header')
         @include('layout.employerNavi')
         <div id = "employerUpdatePage" class="ui container">
-            <form class = "ui form">
+            <form class = "ui form" method="POST" action="{{URL::route('employerUpdatePassword')}}">
+                {{ csrf_field() }}
                 <div class="ui container segment">
                 <h2 class = "ui diving header">Change Password</h2>
                     <div class = "field">
                         <label> Old Password </label>
-                        <input type="text" name = "searchjobtitle">
+                        <input type="password" name = "oldPassword">
                     </div>
                     <div class = "two fields">
                         <div class = "field">
                             <label> New Password </label>
-                            <input type="text" name = "searchjobtitle">
+                            <input type="password" name = "password">
                         </div>
                         <div class = "field">
                             <label>Confirm Password</label>
-                            <input type="text" name = "searchjoblocation">
+                            <input type="password" name = "checkPassword">
                         </div>
                     </div>
                     <button class="ui left foated blue large button" type="submit">
@@ -32,13 +33,19 @@
                     </button> 
                 </div>
             </form>
-            <form class ="ui form" method="POST" action="{{URL::route('employerUpdateProfile.navi')}}">
+            <form class ="ui form" method="POST" action="{{URL::route('employerUpdateProfile.navi')}}" enctype="multipart/form-data" >
                 {{ csrf_field() }}
                 <div class="ui container segment">
                     <h2 class = "ui diving header">Personal Info</h2>
-                        <div class = "field">
-                            <label> Name </label>
-                            <input type="text" name = "name" value="{{$employer -> name}}">
+                        <div class = "two fields">
+                            <div class = "field">
+                                <label> Name </label>
+                                <input type="text" name = "name" value="{{$employer -> name}}">
+                            </div>
+                            <div class = "field">
+                                <label> Profile Picture </label>
+                                <input type="file" name="profilePic" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
+                            </div>
                         </div>
                         <div class = "field">
                             <label> Email</label>
@@ -65,4 +72,9 @@
     </div>
 </body>
 <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
 </script>

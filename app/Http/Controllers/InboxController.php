@@ -90,11 +90,25 @@ class InboxController extends Controller{
 
         if((Session::get('role'))=='student'){
             $inbox = new Inbox;
-            $inbox->fill($request->all());
+            if($request->letterDesc == null){
+                return redirect()->route('studentReplyInbox',$id)->with('alert', 'Plese type a message');
+            }else{
+                $inbox->fill($request->all());
+            }
             $inbox->employerID = $id;
             $inbox->stuID = Session::get('id');
             $inbox->adminID = 0;
             $inbox->roleSent = 3;
+
+            if($request->pdfFile == null){
+                $inbox->pdfFile = null;
+            }else{
+                $file = $request->file('pdfFile');
+                $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                $file->move('files', $filename);
+                $inbox->pdfFile = '/files/' . $filename; 
+            }
+
             $inbox->save();
 
             return redirect()->route('studentReplyInbox',$id)->with('alert', 'Message Sent');
@@ -110,6 +124,16 @@ class InboxController extends Controller{
             $inbox->stuID = Session::get('id');
             $inbox->employerID = 0;
             $inbox->roleSent = 3;
+
+            if($request->pdfFile == null){
+                $inbox->pdfFile = null;
+            }else{
+                $file = $request->file('pdfFile');
+                $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                $file->move('files', $filename);
+                $inbox->pdfFile = '/files/' . $filename; 
+            }
+
             $inbox->save();
 
             return redirect()->route('studentReplyAdminInbox',$id)->with('alert', 'Message Sent');

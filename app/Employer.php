@@ -17,6 +17,7 @@ class Employer extends Model
         'mobileNo',
         'address',
         'companyName',
-        'mouStatus'
+        'mouStatus',
+        'profilePic'
     ];
 }

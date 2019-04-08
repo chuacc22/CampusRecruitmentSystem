@@ -15,7 +15,7 @@
         @include('layout.header')
         @include('layout.employerNavi')
         <div id = "employerPostJob" class="ui segment">
-        <form class = "ui form" method="POST" action="/employer/employerEditJob/{{$job->id}}">
+        <form class = "ui form" method="POST" action="/employer/employerEditJob/{{$job->id}}" enctype="multipart/form-data">
                 <div class="ui container">
                     {{ csrf_field() }}
                     <table class = "ui very basic table">
@@ -32,7 +32,7 @@
                                         <label>Company Website</label>
                                     <input type="text" name = "companyWeb" value="{{$job -> companyWeb}}">                                    
                                     </div>
-                                <td>
+                                </td>
                                 <td>
                                     <div class = "field">
                                         <label>Company Reg.No</label>
@@ -52,7 +52,13 @@
                                         <input type="text" name = "companyName" value="{{$job -> companyName}}">
                                     </div></b>
                                 </td>
-                                <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}"> </td>
+                                <td>
+                                    <div class = "field">
+                                    <label><b> Company Logo </b></label>
+                                    <input type="file" name="companyLogo" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
+                                    {{-- <img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}">  --}}
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan = "2">
@@ -60,7 +66,7 @@
                                     <div class = "field">
                                         <textarea name = "jobDesc">{{$job -> jobDesc}}"</textarea>
                                     </div>
-                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan = "2">
@@ -68,7 +74,7 @@
                                     <div class = "field">
                                         <textarea name = "requirement">{{$job -> requirement}}</textarea>
                                     </div>
-                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan = "2">
@@ -76,7 +82,7 @@
                                     <div class = "field">
                                         <textarea name = "lookingFor">{{$job -> lookingFor}}</textarea>
                                     </div>                                    
-                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <div class="ui two column stackable center aligned grid">

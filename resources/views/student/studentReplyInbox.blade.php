@@ -26,12 +26,16 @@
         @include('layout.header')
         @include('layout.navigation')
         <div id = "studentReplyInbox" class="ui container">
-            <form class = "ui form" method="post" action="/student/studentReplyInbox/{{$employer->id}}">
+            <form class = "ui form" method="post" action="/student/studentReplyInbox/{{$employer->id}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="ui very padded text container segment">
                     <div>
                         <h3 class = "ui diving header">To :  {{$employer->name}}</h3>
                         <textarea name = "letterDesc"></textarea>
+                        <div class = "field">
+                            <label><b> Attachment </b></label>
+                            <input type="file" name="pdfFile" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
+                        </div>
                         <button class="ui right floated blue large button" type="submit">
                             <i class="reply icon"></i>Send
                         </button>
@@ -48,3 +52,10 @@
         </div>
     </div>
 </body>
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
+</script>

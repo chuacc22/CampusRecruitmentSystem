@@ -27,13 +27,17 @@ class LoginController extends Controller
 
         if($student){
             if($request->password==$student->password){
-                //set session
-
-                Session::put('email' , $student->email);
-                Session::put('id', $student->id);
-                Session::put('name', $student->name);
-                Session::put('role', 'student');
-                return redirect('/student/searchedResult');
+                
+                if($student->status == 0){
+                    return back()->with('alert', 'Account Suspended, Please Contact UTAR Admin');
+                }else{
+                    //set session
+                    Session::put('email' , $student->email);
+                    Session::put('id', $student->id);
+                    Session::put('name', $student->name);
+                    Session::put('role', 'student');
+                    return redirect('/student/searchedResult');
+                }
             }else{
                 return back()->with('error', 'Invalid User or Password');
             }
@@ -53,12 +57,16 @@ class LoginController extends Controller
 
         if($employer){
             if($request->password==$employer->password){
-                //set session
-                Session::put('email' , $employer->email);
-                Session::put('id', $employer->id);
-                Session::put('name', $employer->name);
-                Session::put('role', 'employer');
-                return redirect('/employer/employerManageJob');
+                if($employer->status == 0){
+                    return back()->with('alert', 'Account Suspended, Please Contact UTAR Admin');
+                }else{
+                    //set session
+                    Session::put('email' , $employer->email);
+                    Session::put('id', $employer->id);
+                    Session::put('name', $employer->name);
+                    Session::put('role', 'employer');
+                    return redirect('/employer/employerManageJob');
+                }
             }else{
                 return back()->with('error', 'Invalid User or Password');
             }

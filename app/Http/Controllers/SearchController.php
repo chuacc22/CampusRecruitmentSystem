@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use App\Job;
+use App\Employer;
 
 class SearchController extends Controller
 {
@@ -28,8 +29,9 @@ class SearchController extends Controller
     }
 
     public function searchCompany($id){
-        $job['job'] = Job::find($id);
-        return view('/student/companyPage',$job);
+        $job = Job::find($id);
+        $employer = Employer::find($job->employerID);
+        return view('student.companyPage')->with('job',$job)->with('employer',$employer);
     }
 
     public function employerViewJob($id){

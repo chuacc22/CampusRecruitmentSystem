@@ -17,6 +17,7 @@ class Application extends Model
         'applicationStatus',
         'employerID',
         'applyDesc',
-        'pdfFile'
+        'pdfFile',
+        'resume'
     ];
 }

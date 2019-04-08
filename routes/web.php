@@ -41,16 +41,20 @@ Route::get('/authentication/adminLogin', 'naviController@adminLogin') -> name('a
 
 //SEARCH
 Route::get('/searchedResult', 'SearchController@search') -> name('searchedResult');
-Route::get('/student/companyPage/{id}', 'SearchController@searchCompany')-> name('searchedCompany');
+Route::get('/student/companyPage/{id}', 'SearchController@searchCompany')-> name('searchedCompany.navi');
 Route::get('/employer/employerViewJob/{id}', 'SearchController@employerViewJob') -> name('employerViewJob.navi');
 
 //UpdateStudentProfile
 Route::get('/student/studentUpdateProfile', 'UpdateController@searchStudentProfile') -> name('studentSearchProfile.navi');
 Route::post('/student/studentUpdateProfile', 'UpdateController@updateStudentProfile') -> name('studentUpdateProfile.navi');
+Route::post('/student/studentUpdatePassword', 'UpdateController@updateStudentPassword')-> name('studentUpdatePassword');
 
 //UpdateEmployerProfile
 Route::get('/employer/employerUpdateProfile', 'UpdateController@searchEmployerProfile') -> name('employerSearchProfile.navi');
 Route::post('/employer/employerUpdateProfile', 'UpdateController@updateEmployerProfile') -> name('employerUpdateProfile.navi');
+Route::post('/employer/employerUpdatePassword', 'UpdateController@updateEmployerPassword')-> name('employerUpdatePassword');
+
+
 //UpdateEmployerJob
 Route::get('/employer/employerEditJob/{id}', 'UpdateController@matchJobPage') -> name('matchJobPage.navi');
 Route::post('/employer/employerEditJob/{id}', 'UpdateController@employerEditJob') -> name('employerEditJob.navi');
@@ -72,6 +76,8 @@ Route::get('/student/studentMyJob', 'ApplicationController@getApplicationList') 
 //EmployerApplicationList
 Route::get('/employer/employerApplicationList', 'ApplicationController@getApplicationList') -> name('employerApplicationList.navi');
 Route::get('/employer/employerViewApplication/{id}', 'ApplicationController@getApplicationContent');
+Route::post('/employer/employerUpdateApplicationStatus/{id}', 'ApplicationController@updateApplicationStatus');
+Route::get('/employer/employerViewStudentDetail/{id}', 'StudentController@employerViewStudentDetail');
 
 //EmployerViewStudentProfile /employer/viewStudentProfile/
 Route::get('/employer/viewStudentProfile/{id}', 'ApplicationController@getStudentProfile');
@@ -112,7 +118,26 @@ Route::get('/admin/adminReplyStudentInbox/{id}', 'InboxControllerAdmin@getAdminI
 Route::post('/admin/adminReplyEmployerInbox/{id}', 'InboxControllerAdmin@adminSendEmployerMessage');
 Route::post('/admin/adminReplyStudentInbox/{id}', 'InboxControllerAdmin@adminSendStudentMessage');
 
+//admin update password
+Route::get('/admin/adminUpdatePassword', 'UpdateController@adminUpdatePasswordPage')-> name('adminUpdatePassword.navi');
+Route::post('/admin/adminUpdatePassword', 'UpdateController@updateAdminPassword')-> name('adminUpdatePassword');
 
+Route::get('/admin/adminCreateEmployer', 'CreateController@adminCreateEmployer')->name('adminCreateEmployer.navi');
+Route::post('/admin/adminCreateNewEmployerProfile', 'CreateController@adminCreateNewEmployerProfile')->name('adminCreateNewEmployerProfile.navi');
+
+//admin send application to employer
+Route::post('/admin/updateShowApplicationStatus/{id}', 'ApplicationController@updateShowApplicationStatus');
+
+//admin change student account status
+Route::post('/admin/adminChangeStudentStatus/{id}', 'StudentController@adminUpdateStudentStatus');
+
+//admin change employer account status
+Route::post('/admin/adminChangeEmployerStatus/{id}', 'EmployerController@adminUpdateEmployerStatus');
 
 Route::get('/student/searchedResult', 'naviController@searchedResult') -> name('searchedResult.navi');
 Route::get('/employer/employerManageJob', 'naviController@employerManageJob') -> name('employerManageJob.navi');
+
+//download
+Route::get('/employer/employerDownloadPDF/files/{pdfFile}', function($pdfFile){return response()->download("./files/$pdfFile");});
+Route::get('/employer/employerDownloadResume/files/{resume}', function($resume){return response()->download("./files/$resume");});
+Route::get('/download/downloadFile/files/{pdfFile}', function($pdfFile){return response()->download("./files/$pdfFile");});

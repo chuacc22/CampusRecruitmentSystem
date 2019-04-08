@@ -46,4 +46,27 @@ class StudentController extends Controller
                                                         ->with('appliedEmployers',$appliedEmployers);
         }
     }
+
+    public function adminUpdateStudentStatus(Request $request, $id){
+        if((Session::get('role'))== "admin"){
+
+            $student = Student::find($id);
+            if($request->status == 1){
+                $student->status =1;
+            }else if($request->status == 0){
+                $student->status = 0;
+            }
+            $student->update();
+
+                return back()->with('alert', "Student Status Updated");
+        }
+    }
+
+    public function employerViewStudentDetail($id)
+    {
+        if((Session::get('role'))=='employer'){
+            $student = Student::find($id);
+            return view('/employer/viewStudentProfile')->with('student',$student);
+        }
+    }
 }

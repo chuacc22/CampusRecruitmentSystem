@@ -25,12 +25,16 @@
         @include('layout.header')
         @include('layout.employerNavi')
         <div id = "employerReplyAdminInbox" class="ui container">
-            <form class = "ui form" method="post" action="/employer/employerReplyAdminInbox/{{$admin->id}}">
+            <form class = "ui form" method="post" action="/employer/employerReplyAdminInbox/{{$admin->id}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="ui very padded text container segment">
                     <div>
                         <h3 class = "ui diving header">To :  {{$admin->name}}</h3>
                         <textarea name = "letterDesc"></textarea>
+                        <div class = "field">
+                            <label><b> Attachment </b></label>
+                            <input type="file" name="pdfFile" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
+                        </div>
                         <button class="ui right floated blue large button" type="submit">
                             <i class="reply icon"></i>Send
                         </button>

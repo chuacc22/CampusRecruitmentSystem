@@ -38,7 +38,7 @@
                                     </a>
                                 </td>
                                 <td class= "right aligned">
-                                <form method="post"  action="/employer/employerDeleteJob/{{$job->id}}" >
+                                <form method="post"  action="/employer/employerDeleteJob/{{$job->id}}" onsubmit="return confirm('Do you want to detele?')">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button class="ui right floated labeled icon button" type="submit">
@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td><h2><b>{{$job->companyName}}</b></h2></td>
-                                <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}"> </td>
+                            <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{$job->companyLogo}}"> </td>
                             </tr>
                             <tr>
                                 <td colspan = "2">
@@ -101,3 +101,13 @@
 </body>
 <script>
 </script>
+<?php
+    function validateDelete(){
+        $result = confirm('Comfirm Delete ?');
+        if($result == true){
+            return true;
+        }else 
+            return false;
+    }
+?>
+

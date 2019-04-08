@@ -44,23 +44,48 @@ class CreateController extends Controller
             $job = new Job;
             $job->fill($request->all());
             $job->employerId = $id;
+            
+            $file = $request->file('companyLogo');
+            $filename = str_replace(' ', '_', $file->getClientOriginalName());
+            $file->move('images', $filename);
+            $job->companyLogo = '/images/' . $filename;
+
             $job->save();
             return redirect()->route('employerManageJob.navi');
         }else{
             return $result = array('msg' => 'User Not Found !! ', 'error' => true);
         }
+    }
 
-        // if($role == "employer"){
-            
-        //     $job = new JOB;
+    function adminCreateNewEmployerProfile(Request $request){
+        $role = Session::get('role');
 
-        //     $job = $request->all();
+        if($role == "admin"){
 
-        //     $job->save();
+            $employer = new Employer;
+            $employer->fill($request->all());
+            var_dump($request->mouStatus);
+            if($request->mouStatus == "on"){
+                $employer->mouStatus = 1;
+            }else {
+                $employer->mouStatus = 0;
+            }
+            $employer->status = 1;
+            $employer->save();
+            return redirect()->route('adminManageEmployer.navi')->with('alert','Employer Profile Created')->with('alert',$request->mouStatus);
+        }else{
+            return back()->with('alert','Not Permitted');
+        }
+    }
 
-        //     return redirect()->route('employerPostJob.navi');
-        // }else{
-        //     return $result = array('msg' => 'User Not Found !! ', 'error' => true);
-        // }
+    function adminCreateEmployer(){
+
+        // return view('student.studentMyJob');
+        if (Session::has('email')){
+            if (Session::get('role')=='admin'){
+                return view('/admin/adminCreateNewEmployerProfile');
+            }
+        }
+        return view('authentication.adminLogin');
     }
 }

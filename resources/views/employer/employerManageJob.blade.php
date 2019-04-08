@@ -27,10 +27,9 @@
                         <tbody>
                             @foreach($job as $value)
                             <tr>
-                                <td>10/2/2019</td>
+                                <td>{{$value->updated_at->format('d/m/Y')}}</td>
                                 <td>
                                     <a href="/employer/employerViewJob/{{$value->id}}">
-                                    {{-- <a href="{{URL::route('employerViewJob2.navi')}}" name= "{{$value->id}}"> --}}
                                         {{$value -> title}}</a>
                                 </td>
                             </tr>

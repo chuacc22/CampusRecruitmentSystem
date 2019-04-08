@@ -23,7 +23,7 @@
                         <?php $i=0 ?>
                         @foreach($applications as $value)
                         <tr>
-                            <td>12/2/2019</td>
+                            <td>{{$value->updated_at->format('d/m/Y')}}</td>
                             <td>{{$employers[$i]->name}} - {{$employers[$i]->companyName}}</td>
                             <td>{{getApplicationStatus($value->applicationStatus)}}</td>
                         </tr>

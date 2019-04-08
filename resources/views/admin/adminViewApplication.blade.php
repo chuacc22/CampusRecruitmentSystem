@@ -37,22 +37,31 @@
                         <label>Resume</label>
                     </div>
                     <div>
-                        <form >
-                            <button class="ui left foated orange large button" type="submit">
+                        <form method="get" action="/admin/adminReplyStudentInbox/{{$student->id}}">
+                            {{ csrf_field() }}
+                            <button class="fluid ui orange  button" type="submit">
                                 Send Message to Student
                             </button>
                         </form>
                     </div><br>
+                    @if($application->showApplication=0)
                     <div>
-                        <form >
-                            <button class="ui left foated green large button" type="submit">
+                        <form method="post" action="/admin/updateShowApplicationStatus/{{$application->id}}" >
+                            {{ csrf_field() }}
+                            <button class="fluid ui green button" type="submit">
                                 Send Application to Employer
                             </button>
                         </form>
                     </div>
+                    @endif
                 </div>
         </div>
     </div>
 </body>
 <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
 </script>
