@@ -13,7 +13,7 @@
     <div class = "ui container fuild" >
         <!-- header --> 
         @include('layout.header')
-        @include('layout.employerNavi')
+        @include('layout.adminNavi')
         <div id = "adminCreateNewEmployerProfile" class="ui segment">
             <form class = "ui form" method="POST" action="{{URL::route('adminCreateNewEmployerProfile.navi')}}">
                 {{ csrf_field() }}
@@ -24,13 +24,13 @@
                             <tr>
                                 <div class = "field">
                                     <label>Name</label>
-                                <input type="text" name = "name">                                    
+                                <input type="text" name = "name" required>                                    
                                 </div>
                             </tr>
                             <tr>
                                 <div class = "field">
                                     <label>Password</label>
-                                <input type="text" name = "password">                                    
+                                <input type="text" name = "password" required>                                    
                                 </div>
                             </tr>
                             <tr>
@@ -45,13 +45,13 @@
                                 <td>
                                     <div class = "field">
                                         <label>Email</label>
-                                        <input type="text" name = "email">                                    
+                                        <input type="text" name = "email" required>                                    
                                     </div>
                                 <td>
                                 <td>
                                     <div class = "field">
                                         <label>Contact No.</label>
-                                        <input type="text" name = "mobileNo">
+                                        <input type="text" name = "mobileNo" required>
                                     </div>
                                 </td>
                             </tr>
@@ -59,14 +59,14 @@
                                 <td colspan = "2">
                                     <label>Address</label>
                                     <div class = "field">
-                                        <textarea name = "address"></textarea>
+                                        <textarea name = "address" required></textarea>
                                     </div>                                    
                                 <td>
                             </tr>
                             <tr>
                                 <div class = "field">
                                     <label>Company Name</label>
-                                <input type="text" name = "companyName">                                    
+                                <input type="text" name = "companyName" required>                                    
                                 </div>
                             </tr>
                             

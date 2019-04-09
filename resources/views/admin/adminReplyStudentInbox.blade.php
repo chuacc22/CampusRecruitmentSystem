@@ -31,7 +31,7 @@
                 <div class="ui very padded text container segment">
                     <div>
                         <h3 class = "ui diving header">To :  {{$student->name}}</h3>
-                        <textarea name = "letterDesc"></textarea>
+                        <textarea name = "letterDesc" required></textarea>
                         <div class = "field">
                             <label><b> Attachment </b></label>
                             <input type="file" name="pdfFile" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">

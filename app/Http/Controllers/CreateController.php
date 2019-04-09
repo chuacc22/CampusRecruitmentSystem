@@ -42,6 +42,46 @@ class CreateController extends Controller
             // );
 
             $job = new Job;
+            // if($request->title == null){
+                
+            // }
+
+            // if($request->companyName == null){
+                
+            // }
+
+            // if($request->companyWeb == null){
+                
+            // }
+
+            // if($request->companyRegNo == null){
+                
+            // }
+
+            // if($request->jobDesc == null){
+                
+            // }
+
+            // if($request->requirement == null){
+                
+            // }
+
+            // if($request->lookingFor == null){
+                
+            // }
+
+            // if($request->companyOverview == null){
+                
+            // }
+
+            // if($request->companySnapshot == null){
+                
+            // }
+
+
+
+            
+
             $job->fill($request->all());
             $job->employerId = $id;
             

@@ -23,20 +23,20 @@
                             <tr>
                                 <div class = "field">
                                     <label>Job Title</label>
-                                <input type="text" name = "title">                                    
+                                <input type="text" name = "title" required>                                    
                                 </div>
                             <tr>
                             <tr>
                                 <td>
                                     <div class = "field">
                                         <label>Company Website</label>
-                                        <input type="text" name = "companyWeb">                                    
+                                        <input type="text" name = "companyWeb" required>                                    
                                     </div>
                                 </td>
                                 <td>
                                     <div class = "field">
                                         <label>Company Reg.No</label>
-                                        <input type="text" name = "companyRegNo">
+                                        <input type="text" name = "companyRegNo" required>
                                     </div>
                                 </td>
                             </tr>
@@ -49,7 +49,7 @@
                                 <td>
                                     <b><div class = "field">
                                         <label>Company Name</label>
-                                        <input type="text" name = "companyName">
+                                        <input type="text" name = "companyName" required>
                                     </div></b>
                                 </td>
                                 <td>
@@ -64,7 +64,7 @@
                                 <td colspan = "2">
                                     <h3>JOB DESCRIPTION</h3>
                                     <div class = "field">
-                                        <textarea name = "jobDesc"></textarea>
+                                        <textarea name = "jobDesc" required></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -72,7 +72,7 @@
                                 <td colspan = "2">
                                     <h3>Requirements</h3>
                                     <div class = "field">
-                                        <textarea name = "requirement"></textarea>
+                                        <textarea name = "requirement" required></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -80,7 +80,7 @@
                                 <td colspan = "2">
                                     <h3>We're looking for :</h3>
                                     <div class = "field">
-                                        <textarea name = "lookingFor"></textarea>
+                                        <textarea name = "lookingFor" required></textarea>
                                     </div>                                    
                                 </td>
                             </tr>
@@ -89,7 +89,7 @@
                                     <td style="width:50%" valign="top" >
                                         <h3>Company Overview</h3>
                                         <div class = "field">
-                                                <textarea name = "companyOverview"></textarea>
+                                                <textarea name = "companyOverview" required></textarea>
                                         </div>                                        
                                     </td>
                                     <td style="width:50%; border-left: 1px solid #e8e9e9;" valign="top">
@@ -105,15 +105,15 @@
                                     <h3>WORK LOCATION</h3>
                                     <b>Address</b>
                                     <div class = "field">
-                                        <input type="text" name = "address" placeholder="Address">
-                                        <input type="text" name = "district" placeholder="District & PostCode">
-                                        <input type="text" name = "state" placeholder="State">
+                                        <input type="text" name = "address" placeholder="Address" required>
+                                        <input type="text" name = "district" placeholder="District & PostCode" required>
+                                        <input type="text" name = "state" placeholder="State" required>
                                     </div>            
                                 </td>
                                 <td valign="top">
                                     <h3>Contact Us</h3>
                                     <div class = "field">
-                                        <textarea name = "contactUs"></textarea>
+                                        <textarea name = "contactUs" required></textarea>
                                     </div>                                     
                                 </td>
                             </tr>
