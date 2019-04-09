@@ -31,10 +31,24 @@
                         <pre class="myPre">{{$application -> applyDesc}}</pre>
                     </div>
                     <div class = "field">
-                        <label>Other Attachment<label>
+                        @if($application->pdfFile != null)
+                            <div class = "field">
+                                <a href="/download/downloadFile{{$application->pdfFile}}"><h3><u>Other Attachments</u></h3></a>
+                            </div>
+                        @else
+                            <div class = "field"><b>No Attachment Uploaded</b>
+                            </div>
+                        @endif
                     </div>
                     <div class = "field">
-                        <label>Resume</label>
+                        @if($application->resume != null)
+                            <div class = "field">
+                                <a href="/download/downloadFile{{$application->resume}}"><h3><u>Resume_pdf</u></h3></a>
+                            </div>
+                        @else
+                            <div class = "field"><b>No Resume Uploaded</b>
+                            </div>
+                        @endif
                     </div>
                     <div>
                         <form method="get" action="/admin/adminReplyStudentInbox/{{$student->id}}">
@@ -44,7 +58,7 @@
                             </button>
                         </form>
                     </div><br>
-                    @if($application->showApplication=0)
+                    @if($application->showApplication==0)
                     <div>
                         <form method="post" action="/admin/updateShowApplicationStatus/{{$application->id}}" >
                             {{ csrf_field() }}

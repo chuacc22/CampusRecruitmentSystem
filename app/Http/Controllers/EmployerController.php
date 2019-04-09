@@ -51,7 +51,7 @@ class EmployerController extends Controller
             }
             $employer->update();
 
-                return back()->with('alert', "Student Status Updated");
+                return back()->with('alert', "Employer Status Updated");
         }
     }
 }

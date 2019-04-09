@@ -35,7 +35,7 @@ class ApplicationController extends Controller
             $exisitngResume = $student->resume;
 
             if($appliedJob){
-                return redirect()->route('searchedCompany',$id)->with('alert', 'Already applied, processing');
+                return redirect()->route('searchedCompany.navi',$id)->with('alert', 'Already applied, processing');
             }else{
                 $application = new Application;
                 $application->fill($request->all());

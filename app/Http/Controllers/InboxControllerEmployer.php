@@ -96,6 +96,10 @@ class InboxControllerEmployer extends Controller{
             $inbox->employerID = Session::get('id');
             $inbox->roleSent = 2;
 
+            if($request->letterDesc == null){
+                return back()->with('alert', 'Please write something');
+            }
+
             if($request->pdfFile == null){
                 $inbox->pdfFile = null;
             }else{
@@ -120,6 +124,10 @@ class InboxControllerEmployer extends Controller{
             $inbox->stuID = $id;
             $inbox->adminID = 0;
             $inbox->roleSent = 2;
+
+            if($request->letterDesc == null){
+                return back()->with('alert', 'Please write something');
+            }
 
             if($request->pdfFile == null){
                 $inbox->pdfFile = null;
