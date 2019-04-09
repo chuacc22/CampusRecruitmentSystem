@@ -75,7 +75,19 @@
                                 @endif
                             </h3>
                         </td>
-                        </tr>
+                    </tr>
+                    <tr> 
+                        <td colspan = "2">                   
+                            <div>
+                                <form method="get" action="/admin/adminReplyEmployerInbox/{{$employer->id}}">
+                                    {{ csrf_field() }}
+                                    <button class="fluid ui grey button" type="submit">
+                                        Send Message to Employer
+                                    </button>
+                                </form>
+                            </div><br>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
          </div>

@@ -113,6 +113,18 @@
                         @endif
                         <td>
                     </tr>
+                    <tr> 
+                        <td colspan = "2">                   
+                            <div>
+                                <form method="get" action="/admin/adminReplyStudentInbox/{{$student->id}}">
+                                    {{ csrf_field() }}
+                                    <button class="fluid ui grey button" type="submit">
+                                        Send Message to Student
+                                    </button>
+                                </form>
+                            </div><br>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
          </div>
