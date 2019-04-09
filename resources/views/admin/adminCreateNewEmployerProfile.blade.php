@@ -37,7 +37,7 @@
                                 <div class = "field">
                                     <div class="ui toggle checkbox">
                                         <input type="checkbox" name="mouStatus">
-                                        <label>MOU Status</label>
+                                        <label>MOU Status ( Memorandum of Understanding )</label>
                                     </div>
                                 </div>
                             </tr>

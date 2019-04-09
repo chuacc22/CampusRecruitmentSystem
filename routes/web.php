@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('student/studentApplication');
-});
-
 // Route::get('/', function () {
-//     return view('authentication/studentLogin');
+//     return view('student/studentApplication');
 // });
+
+Route::get('/', function () {
+    return view('authentication/studentLogin');
+});
 
 Auth::routes();
 
@@ -90,7 +90,8 @@ Route::get('/admin/adminViewStudentDetail/{id}', 'StudentController@getStudentDe
 Route::get('/admin/adminViewEmployerDetail/{id}', 'EmployerController@getEmployerDetail');
 Route::get('/admin/adminViewNewSpecialList', 'ApplicationController@getNewSpecialApplicationList') -> name('adminViewNewSpecialList.navi');
 Route::get('/admin/adminViewSentSpecialList', 'ApplicationController@getSentSpecialApplicationList') -> name('adminViewSentSpecialList.navi');
-Route::get('/admin/adminViewApplication/{id}', 'ApplicationController@getApplicationContent');
+Route::get('/admin/adminViewRejectedList', 'ApplicationController@getRejectedApplicationList') -> name('adminViewRejectList.navi');
+Route::get('/admin/adminViewApplication/{id}', 'ApplicationController@getApplicationContent') -> name('adminViewApplication.navi');
 
 //Inbox
 Route::get('/student/studentInbox', 'InboxController@getStudentInboxList') -> name('studentInbox.navi');
@@ -127,6 +128,9 @@ Route::post('/admin/adminCreateNewEmployerProfile', 'CreateController@adminCreat
 
 //admin send application to employer
 Route::post('/admin/updateShowApplicationStatus/{id}', 'ApplicationController@updateShowApplicationStatus');
+
+//admin update application status
+Route::post('/admin/adminUpdateApplicationStatus/{id}', 'ApplicationController@adminUpdateApplicationStatus');
 
 //admin change student account status
 Route::post('/admin/adminChangeStudentStatus/{id}', 'StudentController@adminUpdateStudentStatus');

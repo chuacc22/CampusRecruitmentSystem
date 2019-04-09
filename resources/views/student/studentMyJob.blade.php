@@ -12,6 +12,11 @@
         <div id = "studentMyJob">
             <div class="ui container segment" id = "MyJob">
                 <table class="ui celled striped table">
+                    <b>Application Status Guideline : </b>
+                    <b style="color:orange">Pending</b><i class = "long arrow alternate right icon"></i>
+                    <b style="color:blue">Interview Invitation</b><i class = "long arrow alternate right icon"></i>
+                    <b style="color:orange">Reviewing</b><i class = "long arrow alternate right icon"></i>
+                    <b style="color:green">Offer Letter Sent ( Successful )</b>
                     <thead>
                         <tr>
                             <th class="three wide">Date</th>
@@ -50,6 +55,8 @@
             echo '<p style="color: red; text-align: center">Rejected by Student</p>';
         }else if ($status == 6){
             echo '<p style="color: red; text-align: center">Rejected by Employer</p>';
+        }else if ($status == 7){
+            echo '<p style="color: red; text-align: center">Rejected by Admin</p>';
         }else{
             return "Null";
         }

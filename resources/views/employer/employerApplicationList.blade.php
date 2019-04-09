@@ -13,6 +13,11 @@
             <div class="ui container segment" id = "MyJob">
                 {{ csrf_field() }}
                 <table class="ui celled stripped table">
+                    <b>Application Status Guideline : </b>
+                    <b style="color:orange">Pending</b><i class = "long arrow alternate right icon"></i>
+                    <b style="color:blue">Interview Invitation</b><i class = "long arrow alternate right icon"></i>
+                    <b style="color:orange">Reviewing</b><i class = "long arrow alternate right icon"></i>
+                    <b style="color:green">Offer Letter Sent ( Successful )</b>
                     <thead>
                         <tr>
                             <th class="three wide">Send Date</th>
@@ -51,6 +56,7 @@
                                         <option class="item" value="4">Offer Letter Sent</option>
                                         <option class="item" value="5">Rejected by Student</option>
                                         <option class="item" value="6">Rejected by Employer</option>
+                                        <option class="item" value="7">Rejected by Admin</option>
                                     </select>
                                 </div>
                                 <button class="ui button" id="confirmUpdateBtn" type="submit">
@@ -81,7 +87,7 @@
         }else if ($status == 6){
             echo '<p style="color: red; text-align: center">Rejected by Employer  ';
         }else if ($status == 7){
-            echo '<p style="color: red; text-align: center">Rejected by Admin  ';
+            echo '<p style="color: red; text-align: center">Rejected by Admin</p> ';
         }else{
             return "Null";
         }

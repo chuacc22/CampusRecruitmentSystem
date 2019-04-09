@@ -119,6 +119,11 @@
          <div class="ui container segment">
             <table class="ui celled stripped table">
                 <h3 class = "ui diving header">Student Job Application List</h3>
+                <b>Application Status Guideline : </b>
+                <b style="color:orange">Pending</b><i class = "long arrow alternate right icon"></i>
+                <b style="color:blue">Interview Invitation</b><i class = "long arrow alternate right icon"></i>
+                <b style="color:orange">Reviewing</b><i class = "long arrow alternate right icon"></i>
+                <b style="color:green">Offer Letter Sent ( Successful )</b>
                 <tbody>
                     <?php $i=0 ?>
                     @foreach($appliedJobs as $values)
@@ -157,6 +162,8 @@
             echo '<p style="color: red; text-align: center">Rejected by Student</p>';
         }else if ($status == 6){
             echo '<p style="color: red; text-align: center">Rejected by Employer</p>';
+        }else if ($status == 7){
+            echo '<p style="color: red; text-align: center">Rejected by Admin</p>';
         }else{
             return "Null";
         }

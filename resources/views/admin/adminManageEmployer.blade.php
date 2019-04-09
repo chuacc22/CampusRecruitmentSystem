@@ -49,11 +49,11 @@
                                     <option class="item" value="0">Suspend</option>
                                 </select>
                             </div>
-                            <button class="ui button" id="confirmUpdateBtn" type="submit">
+                            <button class="ui blue button" id="confirmUpdateBtn" type="submit">
                                 Update</button>
                         </form>
-                        <div class="footer">
-                            <button class= "ui red button" id="employerCancelBtn"> Cancel </button>
+                        <br><div class="footer">
+                            <button class= "ui button" id="employerCancelBtn"> Cancel </button>
                         </div>
                     </div>
                 </div>

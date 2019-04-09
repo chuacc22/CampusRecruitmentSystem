@@ -7,6 +7,7 @@
               <div class="menu">
                 <a class="item" href="{{URL::route('adminViewNewSpecialList.navi')}}"> New Applications </a>
                 <a class="item" href="{{URL::route('adminViewSentSpecialList.navi')}}"> Sent Applications </a>
+                <a class="item" href="{{URL::route('adminViewRejectList.navi')}}"> Rejected Applications </a>
               </div>
             </div>
           <a href="{{URL::route('adminInbox.navi')}}" class="item">Inbox </a>

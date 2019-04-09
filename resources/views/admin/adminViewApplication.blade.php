@@ -59,14 +59,24 @@
                         </form>
                     </div><br>
                     @if($application->showApplication==0)
-                    <div>
-                        <form method="post" action="/admin/updateShowApplicationStatus/{{$application->id}}" >
-                            {{ csrf_field() }}
-                            <button class="fluid ui green button" type="submit">
-                                Send Application to Employer
-                            </button>
-                        </form>
-                    </div>
+                        @if($application->applicationStatus != 7)
+                            <div>
+                                <form method="post" action="/admin/adminUpdateApplicationStatus/{{$application->id}}" >
+                                    {{ csrf_field() }}
+                                    <button class="fluid ui red button" type="submit">
+                                        Reject Application
+                                    </button>
+                                </form>
+                            </div><br>
+                            <div>
+                                <form method="post" action="/admin/updateShowApplicationStatus/{{$application->id}}" >
+                                    {{ csrf_field() }}
+                                    <button class="fluid ui green button" type="submit">
+                                        Send Application to Employer
+                                    </button>
+                                </form>
+                            </div>
+                        @endif
                     @endif
                 </div>
         </div>

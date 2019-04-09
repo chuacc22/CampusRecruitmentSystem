@@ -34,9 +34,11 @@ class ApplicationController extends Controller
             $student=Student::find(Session::get('id'));
             $exisitngResume = $student->resume;
 
-            if($appliedJob){
-                return redirect()->route('searchedCompany.navi',$id)->with('alert', 'Already applied, processing');
-            }else{
+            // if($appliedJob){
+            //     
+            // }else{
+            if(!$appliedJob || $appliedJob->applicationStatus == 7){
+
                 $application = new Application;
                 $application->fill($request->all());
                 $application->jobID = $id;
@@ -76,6 +78,8 @@ class ApplicationController extends Controller
                 $application->save();
     
                 return redirect()->route('searchedCompany.navi',$id)->with('alert', 'Application Sent');
+            }else{
+                return redirect()->route('searchedCompany.navi',$id)->with('alert', 'Already applied, processing');
             }
         }
     }
@@ -109,15 +113,18 @@ class ApplicationController extends Controller
     public function getNewSpecialApplicationList(Request $request){
 
         if((Session::get('role'))== "admin"){
-            $applications = Application::where('mouStatus',1)->where('showApplication', 0)->get();
+            $applications = Application::where('mouStatus',1)
+                                    ->where('showApplication', 0)
+                                    ->where('applicationStatus', '!=', 7)
+                                    ->orderby('updated_at','desc')->get();
             $employers = collect();
             $students = collect();
 
             foreach($applications as $data){
-                $employer = Employer::find($data->employerID);
-                $employers->push($employer);
-                $student = Student::find($data->stuID);
-                $students->push($student);
+                    $employer = Employer::find($data->employerID);
+                    $employers->push($employer);
+                    $student = Student::find($data->stuID);
+                    $students->push($student);
             }
             return view('/admin/adminViewNewSpecialList')->with('applications',$applications)
                                                         ->with('employers',$employers)
@@ -127,7 +134,26 @@ class ApplicationController extends Controller
     public function getSentSpecialApplicationList(Request $request){
         
         if((Session::get('role'))== "admin"){
-                $applications = Application::where('mouStatus',1)->where('showApplication', 1)->get();
+                $applications = Application::where('mouStatus',1)->where('showApplication', 1)->orderby('updated_at','desc')->get();
+                $employers = collect();
+                $students = collect();
+    
+                foreach($applications as $data){
+                    $employer = Employer::find($data->employerID);
+                    $employers->push($employer);
+                    $student = Student::find($data->stuID);
+                    $students->push($student);
+                }
+                return view('/admin/adminViewSentSpecialList')->with('applications',$applications)
+                                                            ->with('employers',$employers)
+                                                            ->with('students', $students);
+        }
+    }
+
+    public function getRejectedApplicationList(Request $request){
+        
+        if((Session::get('role'))== "admin"){
+                $applications = Application::where('applicationStatus', 7)->orderby('updated_at','desc')->get();
                 $employers = collect();
                 $students = collect();
     
@@ -201,6 +227,16 @@ class ApplicationController extends Controller
             $application->showApplication = 1;
             $application->update();
             return redirect()->route('adminViewNewSpecialList.navi',$id)->with('alert','Application Sent to the Employer');
+        }
+    }
+
+    public function adminUpdateApplicationStatus(Request $request, $id){
+        if((Session::get('role'))=='admin'){
+            $application = Application::find($id);
+            $application->showApplication = 0;
+            $application->applicationStatus = 7;
+            $application->update();
+            return redirect()->route('adminViewApplication.navi',$id)->with('alert','Student Application Rejected');
         }
     }
 }
