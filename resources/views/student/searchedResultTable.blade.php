@@ -8,7 +8,9 @@
                             <a href="/student/companyPage/{{$value->id}}">
                             <h2><u>{{$value -> companyName}}</u></h2></a>
                             <br><i class="map marker alternate icon"></i>{{$value -> district}}, {{$value -> district}}</td>
-                        <td class= "right aligned"><img style="height: 100px; width:160px" src = "{{URL::asset('/images/ChaintopeLogo.png')}}"> </td>
+                            <td class= "right aligned">
+                                <img style="height: 100px; width:160px" src ="{{$value->companyLogo}}"> 
+                            </td>
                     </tr>
                     <tr>
                         <td colspan = "2">

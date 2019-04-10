@@ -36,7 +36,7 @@
                         <input type="file" name="pdfFile" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
                     </div>
                     <div class = "field">
-                        <label><b> Resume </b></label>
+                        <label><b> Resume (Student Default Resume will be send) </b></label>
                         <input type="file" name="resume" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput">
                     </div>
                     <button class="ui left foated blue large button" type="submit">

@@ -30,7 +30,7 @@
                             <tr>
                                 <div class = "field">
                                     <label>Password</label>
-                                <input type="text" name = "password" required>                                    
+                                <input type="password" name = "password" required>                                    
                                 </div>
                             </tr>
                             <tr>
@@ -69,7 +69,6 @@
                                 <input type="text" name = "companyName" required>                                    
                                 </div>
                             </tr>
-                            
                         </tbody>
                     </table>
                 </div>

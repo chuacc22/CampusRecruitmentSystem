@@ -113,8 +113,7 @@ class UpdateController extends Controller
             }
             $employer->update();
 
-
-            return redirect()->route('employerUpdateProfile.navi');
+            return redirect()->route('employerUpdateProfile.navi')->with('alert','Profile Updated');
         }else{
             return $result = array('msg' => 'User Not Found !! ', 'error' => true);
         }
@@ -168,8 +167,8 @@ class UpdateController extends Controller
                 $filename = str_replace(' ', '_', $file->getClientOriginalName());
                 $file->move('images', $filename);
                 $job->companyLogo = '/images/' . $filename;
-
             }
+            $job->update();
             return redirect()->route('employerViewJob.navi',$id);
         }else{
             return $result = array('msg' => 'User Not Found !! ', 'error' => true);

@@ -42,54 +42,19 @@ class CreateController extends Controller
             // );
 
             $job = new Job;
-            // if($request->title == null){
-                
-            // }
-
-            // if($request->companyName == null){
-                
-            // }
-
-            // if($request->companyWeb == null){
-                
-            // }
-
-            // if($request->companyRegNo == null){
-                
-            // }
-
-            // if($request->jobDesc == null){
-                
-            // }
-
-            // if($request->requirement == null){
-                
-            // }
-
-            // if($request->lookingFor == null){
-                
-            // }
-
-            // if($request->companyOverview == null){
-                
-            // }
-
-            // if($request->companySnapshot == null){
-                
-            // }
-
-
-
-            
 
             $job->fill($request->all());
             $job->employerId = $id;
             
-            $file = $request->file('companyLogo');
-            $filename = str_replace(' ', '_', $file->getClientOriginalName());
-            $file->move('images', $filename);
-            $job->companyLogo = '/images/' . $filename;
-
+            if($request->companyLogo == null ){
+                $job->companyLogo = null;
+            }else{
+                $file = $request->file('companyLogo');
+                $filename = str_replace(' ', '_', $file->getClientOriginalName());
+                $file->move('images', $filename);
+                $job->companyLogo = '/images/' . $filename;
+            }
+            
             $job->save();
             return redirect()->route('employerManageJob.navi');
         }else{
@@ -104,7 +69,6 @@ class CreateController extends Controller
 
             $employer = new Employer;
             $employer->fill($request->all());
-            var_dump($request->mouStatus);
             if($request->mouStatus == "on"){
                 $employer->mouStatus = 1;
             }else {
@@ -112,7 +76,7 @@ class CreateController extends Controller
             }
             $employer->status = 1;
             $employer->save();
-            return redirect()->route('adminManageEmployer.navi')->with('alert','Employer Profile Created')->with('alert',$request->mouStatus);
+            return redirect()->route('adminManageEmployer.navi')->with('alert','Employer Profile Created');
         }else{
             return back()->with('alert','Not Permitted');
         }
